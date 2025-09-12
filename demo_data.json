@@ -1,0 +1,178 @@
+[
+  {
+    "model": "base.softwaresolution",
+    "pk": 1,
+    "fields": {
+      "title": "AI Chat Support",
+      "slug": "ai-chat-support",
+      "image": null,
+      "description": "An AI customer-support system with intent detection, RAG over a verified knowledge base, workflow automation (booking/status), human handoff with full transcript, and analytics (CSAT, containment, response time). Omnichannel via web/WhatsApp/Messenger.",
+      "published_at": "2025-08-01T10:00:00Z",
+      "created_by": null,
+      "created_at": "2025-08-01T10:00:00Z",
+      "updated_at": "2025-08-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.softwaresolution",
+    "pk": 2,
+    "fields": {
+      "title": "Predictive Sales Assistant",
+      "slug": "predictive-sales-assistant",
+      "image": null,
+      "description": "Sales intelligence that forecasts purchase intent and churn, recommends next-best-actions, and syncs tasks to CRM/calendar. Includes cohort dashboards and A/B testing to measure lift.",
+      "published_at": "2025-08-05T09:00:00Z",
+      "created_by": null,
+      "created_at": "2025-08-05T09:00:00Z",
+      "updated_at": "2025-08-05T09:00:00Z"
+    }
+  },
+  {
+    "model": "base.softwaresolution",
+    "pk": 3,
+    "fields": {
+      "title": "Smart Document Analyzer",
+      "slug": "smart-document-analyzer",
+      "image": null,
+      "description": "NLP pipeline for PDFs and docs: OCR, text normalization, entity extraction, clause/risk highlighting, and executive summaries. Exposes API and a reviewer UI with side-by-side highlights.",
+      "published_at": "2025-08-08T08:30:00Z",
+      "created_by": null,
+      "created_at": "2025-08-08T08:30:00Z",
+      "updated_at": "2025-08-08T08:30:00Z"
+    }
+  },
+  {
+    "model": "base.softwaresolution",
+    "pk": 4,
+    "fields": {
+      "title": "Vision-based Quality Inspection",
+      "slug": "vision-quality-inspection",
+      "image": null,
+      "description": "Real-time computer vision for detecting scratches, dents, misalignments, and missing parts. Supports edge inference, operator feedback loops, and integration with MES/ERP.",
+      "published_at": "2025-08-12T07:45:00Z",
+      "created_by": null,
+      "created_at": "2025-08-12T07:45:00Z",
+      "updated_at": "2025-08-12T07:45:00Z"
+    }
+  },
+  {
+    "model": "base.softwaresolution",
+    "pk": 5,
+    "fields": {
+      "title": "Healthcare Diagnostics AI",
+      "slug": "healthcare-diagnostics-ai",
+      "image": null,
+      "description": "Clinical decision-support: imaging pre-screen, symptom checker, and risk scoring with clinician-in-the-loop review, audit logs, and calibration monitoring.",
+      "published_at": "2025-08-15T06:15:00Z",
+      "created_by": null,
+      "created_at": "2025-08-15T06:15:00Z",
+      "updated_at": "2025-08-15T06:15:00Z"
+    }
+  },
+
+  {
+    "model": "base.casestudy",
+    "pk": 1,
+    "fields": {
+      "title": "Support Efficiency Boost",
+      "slug": "support-efficiency-boost",
+      "summary": "Deployed AI chat to cut first-response times and improve containment during festival peaks.",
+      "problem": "Long first-response times, fragmented knowledge, and inconsistent handoffs led to ticket backlogs and low CSAT.",
+      "solution": "Implemented an AI chat layer grounded on curated KB (RAG), with escalation to agents including full transcript context.",
+      "results": "63% faster first response in 2 weeks; +9pt CSAT; 42% self-serve containment.",
+      "client_name": "Aarav Shrestha",
+      "client_company": "Himalayan Support Pvt. Ltd.",
+      "client_job_title": "Operations Lead",
+      "image": null,
+      "published_at": "2025-08-02T10:00:00Z",
+      "created_by": null,
+      "solutions": [1],
+      "created_at": "2025-08-02T10:00:00Z",
+      "updated_at": "2025-08-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.casestudy",
+    "pk": 2,
+    "fields": {
+      "title": "Sales Pipeline Lift",
+      "slug": "sales-pipeline-lift",
+      "summary": "Lead scoring and churn prediction to focus reps on the highest-impact actions.",
+      "problem": "Reps had no reliable way to prioritize leads; late follow-ups hurt conversions.",
+      "solution": "Cleaned CRM data, trained intent/churn models, and pushed next-best-actions to CRM + calendar with reminders.",
+      "results": "28% increase in qualified leads; faster cycle time; higher win rate in priority segments.",
+      "client_name": "S. Adhikari",
+      "client_company": "Everest Retail Group",
+      "client_job_title": "Sales Manager",
+      "image": null,
+      "published_at": "2025-08-06T09:00:00Z",
+      "created_by": null,
+      "solutions": [2],
+      "created_at": "2025-08-06T09:00:00Z",
+      "updated_at": "2025-08-06T09:00:00Z"
+    }
+  },
+  {
+    "model": "base.casestudy",
+    "pk": 3,
+    "fields": {
+      "title": "Contract Review Acceleration",
+      "slug": "contract-review-acceleration",
+      "summary": "Automated contract summaries and risk highlights for faster legal prep.",
+      "problem": "Lawyers manually reviewed large contracts, delaying case preparation.",
+      "solution": "Built OCR → NER → clause/risk detection pipeline with executive summaries and reviewer UI.",
+      "results": "Review time cut from hours to minutes; improved consistency across teams.",
+      "client_name": "R. Karki",
+      "client_company": "Nepal Legal Associates",
+      "client_job_title": "Senior Associate",
+      "image": null,
+      "published_at": "2025-08-09T08:30:00Z",
+      "created_by": null,
+      "solutions": [3],
+      "created_at": "2025-08-09T08:30:00Z",
+      "updated_at": "2025-08-09T08:30:00Z"
+    }
+  },
+  {
+    "model": "base.casestudy",
+    "pk": 4,
+    "fields": {
+      "title": "Manufacturing Defect Reduction",
+      "slug": "manufacturing-defect-reduction",
+      "summary": "Edge vision with anomaly detection reduced defects and improved throughput.",
+      "problem": "Manual inspection missed subtle defects and slowed the line.",
+      "solution": "Installed cameras at key stations; ran object detection/anomaly models with operator feedback loop.",
+      "results": "35% defect reduction; better traceability via MES/ERP integration.",
+      "client_name": "M. Lama",
+      "client_company": "Kathmandu Manufacturing Co.",
+      "client_job_title": "Quality Head",
+      "image": null,
+      "published_at": "2025-08-13T07:45:00Z",
+      "created_by": null,
+      "solutions": [4],
+      "created_at": "2025-08-13T07:45:00Z",
+      "updated_at": "2025-08-13T07:45:00Z"
+    }
+  },
+  {
+    "model": "base.casestudy",
+    "pk": 5,
+    "fields": {
+      "title": "Clinical Triage Improvement",
+      "slug": "clinical-triage-improvement",
+      "summary": "AI-assisted imaging and symptom analysis to support clinician decisions.",
+      "problem": "High patient volume and limited time increased triage variability.",
+      "solution": "Combined EHR fields with imaging pre-screens; risk scores with conservative rules and full audit trail.",
+      "results": "17% improvement in triage accuracy; faster prioritization in busy clinics.",
+      "client_name": "Dr. P. Gurung",
+      "client_company": "Maya Health Network",
+      "client_job_title": "Medical Director",
+      "image": null,
+      "published_at": "2025-08-16T06:15:00Z",
+      "created_by": null,
+      "solutions": [5],
+      "created_at": "2025-08-16T06:15:00Z",
+      "updated_at": "2025-08-16T06:15:00Z"
+    }
+  }
+]
