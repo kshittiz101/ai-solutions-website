@@ -11,7 +11,7 @@ __pycache__/
 .env
 db.sqlite3
 media/
-static/
+
 
 # Ignore Django migrations but keep package marker
 **/migrations/*

@@ -1,147 +1,181 @@
-<header class="py-3 sticky top-0 z-40 w-full text-gray-900 dark:text-white">
+<header id="navbar" class="fixed top-0 z-50 w-full transition-all duration-300">
+  <!-- Navbar Background -->
   <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:py-4 rounded-lg"
-  >
-    <a href="{% url 'home' %}" class="flex items-center gap-2">
-      <div
-        class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-emerald-500 text-white font-bold shadow"
+    id="navbar-bg"
+    class="absolute inset-0 backdrop-blur-md border-b border-transparent transition-all duration-300"
+  ></div>
+
+  <!-- Main Navbar Content -->
+  <div class="relative z-10 mx-auto max-w-7xl px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="{% url 'home' %}" class="flex items-center gap-3 group">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-600 text-white font-bold shadow-md group-hover:shadow-lg transition-all duration-200"
+        >
+          AI
+        </div>
+        <div class="text-left">
+          <p
+            class="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors"
+          >
+            AI Solutions
+          </p>
+          <p class="text-xs text-gray-300">Digital Experience</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a
+          href="{% url 'home' %}"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Home
+        </a>
+        <a
+          href="#cases"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Case Studies
+        </a>
+        <a
+          href="#testimonials"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Testimonials
+        </a>
+        <a
+          href="#articles"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Articles
+        </a>
+        <a
+          href="#events"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Events
+        </a>
+        <a
+          href="#contact"
+          class="px-4 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-all duration-200"
+        >
+          Contact
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex">
+        <a
+          href="#contact"
+          class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+        >
+          Get Demo
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="navBtn"
+        class="md:hidden p-2 rounded-lg hover:bg-white/10 text-white transition-colors"
+        aria-label="Toggle menu"
       >
-        AI
-      </div>
-      <div class="text-left">
-        <p class="text-sm font-bold leading-5">AI‑Solutions</p>
-        <p class="text-[11px] leading-4 text-gray-500 dark:text-gray-300">
-          Digital Employee Experience
-        </p>
-      </div>
-    </a>
-    <nav class="hidden items-center gap-1 md:flex">
+        <svg
+          id="navIconOpen"
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+        <svg
+          id="navIconClose"
+          class="hidden h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div
+    id="mobileNav"
+    class="hidden md:hidden bg-black/90 backdrop-blur-md border-t border-cyan-400/20"
+  >
+    <nav class="px-4 py-4 space-y-2">
       <a
-        class="px-3 py-2 text-sm font-medium hover:text-red-500"
         href="{% url 'home' %}"
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
       >
         Home
       </a>
-      <a class="px-3 py-2 text-sm font-medium hover:text-red-500" href="#cases">
-        Case Studies
-      </a>
-      <a
-        class="px-3 py-2 text-sm font-medium hover:text-red-500"
-        href="#testimonials"
-        >Testimonials</a
-      >
-      <a
-        class="px-3 py-2 text-sm font-medium hover:text-red-500"
-        href="#articles"
-        >Articles</a
-      >
-      <a class="px-3 py-2 text-sm font-medium hover:text-red-500" href="#events"
-        >Events</a
-      >
-      <a
-        class="px-3 py-2 text-sm font-medium hover:text-red-500"
-        href="#contact"
-      >
-        Contact
-      </a>
-    </nav>
-    <div class="hidden md:flex">
-      <a
-        href="#"
-        class="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-gray-600 hover:text-red-500 dark:bg-white dark:text-black"
-      >
-        Get a Demo
-        <svg
-          class="h-4 w-4"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-    <button
-      id="navBtn"
-      class="inline-flex items-center justify-center rounded-lg p-2 md:hidden hover:bg-black/5 dark:hover:bg-white/10"
-      aria-label="Toggle navigation"
-    >
-      <svg
-        id="navIconOpen"
-        class="h-6 w-6"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-      <svg
-        id="navIconClose"
-        class="hidden h-6 w-6"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
-    </button>
-  </div>
-  <div
-    id="mobileNav"
-    class="hidden md:hidden border-t border-black/10 dark:border-white/10 backdrop-blur"
-  >
-    <nav class="mx-auto max-w-7xl px-4 py-3 grid grid-cols-2 gap-2">
-      <a
-        href="#solutions"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
-      >
-        Solutions
-      </a>
       <a
         href="#cases"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
       >
         Case Studies
       </a>
       <a
         href="#testimonials"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
-        >Testimonials
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
+      >
+        Testimonials
       </a>
       <a
         href="#articles"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
-        >Articles
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
+      >
+        Articles
       </a>
       <a
         href="#events"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
-        >Events
-      </a>
-      <a
-        href="#contact"
-        class="rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400"
-        >Contact Us
-      </a>
-      <a
-        href="#contact"
-        class="col-span-2 inline-flex items-center justify-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white dark:bg-white dark:text-black"
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
       >
-        Get a Demo
+        Events
       </a>
+      <a
+        href="#contact"
+        class="block px-3 py-2 text-sm font-medium text-white hover:text-cyan-400 hover:bg-cyan-500/10 rounded-lg transition-colors"
+      >
+        Contact
+      </a>
+      <div class="pt-2">
+        <a
+          href="#contact"
+          class="block w-full text-center bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors"
+        >
+          Get Demo
+        </a>
+      </div>
     </nav>
   </div>
 </header>
