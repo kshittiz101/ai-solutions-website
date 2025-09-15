@@ -1,10 +1,7 @@
-<section
-  id="articles"
-  class="py-16 md:py-24 bg-gradient-to-b from-transparent to-black/5 dark:to-white/5"
->
+<section id="articles" class="py-16 md:py-24">
   <div class="mx-auto max-w-3xl text-center mb-12">
     <span
-      class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs font-semibold shadow-sm dark:border-white/10 dark:bg-white/10"
+      class="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1 text-xs font-semibold shadow-sm dark:border-white/10"
       >Insights</span
     >
     <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
@@ -15,13 +12,11 @@
   <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
     {% for article in articles %}
     <article
-      class="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/5"
+      class="rounded-2xl border border-black/10 p-6 shadow-sm dark:border-white/10"
     >
-      <h3 class="text-lg font-semibold">
-        Designing people‑first AI assistants
-      </h3>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
-        Principles for adoption, safety, and ROI in enterprise environments.
+      <h3 class="text-lg font-semibold line-clamp-1">{{ article.title }}</h3>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+        {{ article.excerpt }}
       </p>
       <a
         href="{% url 'articles_details' article.slug %}"
