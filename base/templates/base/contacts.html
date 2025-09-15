@@ -1,131 +1,131 @@
-<!-- contact section  -->
-<section
-  id="contact"
-  class="py-16 w-full h-min-[calc(100vh-140px)] md:py-24 flex justify-center items-center"
->
-  <div class="container">
-    <div class="mx-auto max-w-3xl text-center mb-12">
-      <span
-        class="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1 text-xs font-semibold shadow-sm dark:border-white/10"
-        >Contact</span
+<!-- Contact Section -->
+<section id="contact" class="py-16 md:py-24 bg-[#F2F4EA]">
+  <div class="mx-auto max-w-6xl px-4">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div
+        class="inline-flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
       >
-      <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-        Tell us about your job requirements
+        <i class="ri-mail-line"></i>
+        Contact Us
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Get in Touch
       </h2>
-      <p class="mt-3 text-gray-600 dark:text-gray-300">
-        No account needed. We’ll respond by email.
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Ready to transform your business with AI? Let's discuss your project.
       </p>
     </div>
-    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 md:grid-cols-5">
-      <!-- enquiry form -->
-      <form id="contactForm" class="md:col-span-3 space-y-4" method="post">
-        {% csrf_token %}
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <input
-            name="name"
-            required
-            placeholder="Full name"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder="Email address"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
-          <input
-            name="phone"
-            required
-            placeholder="Phone number"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
-          <!-- company name -->
-          <input
-            name="company"
-            required
-            placeholder="Company name"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
-          <!-- country -->
-          <input
-            name="country"
-            required
-            placeholder="Country"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
-          <!-- job title -->
-          <input
-            name="job_title"
-            required
-            placeholder="Job title"
-            class="w-full rounded-xl border border-black/10 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10"
-          />
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <form id="contactForm" class="space-y-6" method="post">
+          {% csrf_token %}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              name="name"
+              required
+              placeholder="Full Name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+            <input
+              name="email"
+              type="email"
+              required
+              placeholder="Email Address"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+            <input
+              name="phone"
+              placeholder="Phone Number"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+            <input
+              name="company_name"
+              placeholder="Company Name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+            <input
+              name="country"
+              placeholder="Country"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+            <input
+              name="job_title"
+              placeholder="Job Title"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all"
+            />
+          </div>
+
+          <textarea
+            name="job_details"
+            rows="4"
+            placeholder="Tell us about your project requirements..."
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all resize-none"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="w-full bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+          >
+            Send Message
+            <i class="ri-send-plane-line"></i>
+          </button>
+        </form>
+      </div>
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">
+            Why Choose AI Solutions?
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              >
+                <i class="ri-check-line text-cyan-600 text-sm"></i>
+              </div>
+              <p class="text-gray-600">AI-powered automation solutions</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              >
+                <i class="ri-check-line text-cyan-600 text-sm"></i>
+              </div>
+              <p class="text-gray-600">Rapid prototyping and development</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              >
+                <i class="ri-check-line text-cyan-600 text-sm"></i>
+              </div>
+              <p class="text-gray-600">24/7 AI-driven support</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              >
+                <i class="ri-check-line text-cyan-600 text-sm"></i>
+              </div>
+              <p class="text-gray-600">Custom AI assistants</p>
+            </div>
+          </div>
         </div>
 
-        <!-- job details -->
-        <textarea
-          name="job_details"
-          required
-          rows="5"
-          placeholder="Describe your requirements, timelines, and goals"
-          class="w-full rounded-xl border border-black/10 bg-white/70 px-3 py-2 shadow-sm outline-none focus:ring-2 focus:ring-blue-500 dark:border-white/10 dark:bg-white/10"
-        ></textarea>
-        <button
-          type="submit"
-          class="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:bg-gray-800 hover:text-blue-500 hover:border-blue-500 border-2 border-transparent dark:bg-white dark:text-black"
-        >
-          Submit inquiry
-          <svg
-            class="h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </button>
-        <p class="text-xs text-gray-500 dark:text-gray-400">
-          We'll respond to your request as soon as possible, via email or phone.
-        </p>
-      </form>
-      <aside class="md:col-span-2 space-y-4">
-        <div
-          class="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm dark:border-white/10 dark:bg-white/5"
-        >
-          <h4 class="text-sm font-semibold">Why teams choose AI‑Solutions</h4>
-          <ul class="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> Intelligent AI-powered contact
-              automation
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> Rapid AI prototyping and
-              proof-of-concept services
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> Real-time analytics and insights
-              dashboard
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> 24/7 AI-driven customer support
-              solutions
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> Fully customizable AI assistants
-              tailored to your business
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="mt-0.5">✔</span> End-to-end AI Solutions as a Service
-              (AIaaS)
-            </li>
-          </ul>
+        <div class="bg-cyan-600 rounded-2xl p-6 text-white text-center">
+          <div class="flex items-center justify-center gap-2 mb-3">
+            <i class="ri-time-line text-xl"></i>
+            <h4 class="text-lg font-semibold">Quick Response</h4>
+          </div>
+          <p class="text-cyan-100 text-sm">
+            We'll respond within 24 hours to discuss your project and provide a
+            free consultation.
+          </p>
         </div>
-      </aside>
+      </div>
     </div>
   </div>
 </section>

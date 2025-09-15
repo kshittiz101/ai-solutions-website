@@ -37,39 +37,48 @@ def generate_toasts_from_messages(request):
 
 def handle_inquiry_submission(request):
     """Handles POST inquiry submission logic."""
-    name = request.POST.get("name")
-    email = request.POST.get("email")
-    phone = request.POST.get("phone")
-    company = request.POST.get("company")
-    country = request.POST.get("country")
-    job_title = request.POST.get("job_title")
-    job_details = request.POST.get("job_details")
+    name = request.POST.get("name", "").strip()
+    email = request.POST.get("email", "").strip()
+    phone = request.POST.get("phone", "").strip()
+    company_name = request.POST.get("company_name", "").strip()
+    country = request.POST.get("country", "").strip()
+    job_title = request.POST.get("job_title", "").strip()
+    job_details = request.POST.get("job_details", "").strip()
 
-    # Check required fields
-    if not all([name, email, phone, company, country, job_title, job_details]):
-        messages.error(request, "Please fill all the fields")
+    # Check required fields (only name and email are required per model)
+    if not name:
+        messages.error(request, "Please enter your name")
         return False
 
-    # Validate phone number
+    if not email:
+        messages.error(request, "Please enter your email address")
+        return False
+
+    # Validate phone number only if provided
+    if phone:
+        try:
+            phone_validator(phone)
+        except ValidationError:
+            messages.error(request, "Enter a valid phone number with country code (e.g. +977-9812345678)")
+            return False
+
     try:
-        phone_validator(phone)
-    except ValidationError:
-        messages.error(request, "Enter a valid phone number with country code")
+        # Save inquiry
+        Inquiry.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            company_name=company_name,
+            country=country,
+            job_title=job_title,
+            job_details=job_details,
+        )
+        messages.success(request, "Thank you! Your inquiry has been submitted successfully. We'll respond within 24 hours.")
+        return True
+
+    except Exception as e:
+        messages.error(request, "Something went wrong. Please try again.")
         return False
-
-    # Save inquiry
-    Inquiry.objects.create(
-        name=name,
-        email=email,
-        phone=phone,
-        company_name=company,
-        country=country,
-        job_title=job_title,
-        job_details=job_details,
-    )
-
-    messages.success(request, "Inquiry submitted successfully")
-    return True
 
 
 def home(request):

@@ -57,7 +57,7 @@ function closeToast(button) {
         console.log("Removing empty toast container");
         container.remove();
       }
-    }, 300);
+    }, 400);
   } else {
     console.log("Toast not found!");
   }
@@ -77,6 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`Auto-closing toast ${index + 1}`);
         closeToast(closeButton);
       }
-    }, 1500);
+    }, 2000);
   });
 });
