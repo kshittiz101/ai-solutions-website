@@ -33,9 +33,16 @@ class CaseStudyAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'published_at')
+    list_display = ('title', 'status', 'published_at', 'author')
     list_filter = ('status', 'published_at')
     search_fields = ('title', 'content')
+    exclude = ("author",)
+
+   # save the author automatically according to the user who is logged in admin panel
+    def save_model(self, request, obj, form, change):
+        if not obj.author:
+            obj.author = request.user
+        return super().save_model(request, obj, form, change)
 
 
 class EventAdmin(admin.ModelAdmin):

@@ -1,0 +1,177 @@
+{% extends 'base/details_page_lay.html' %}
+
+<!-- load static -->
+{% load static %}
+
+<!-- title -->
+{% block title %} {{article.title}} - AI Solutions {% endblock %}
+
+<!-- content -->
+{% block content %}
+<section
+  id="article-details"
+  class="py-20 md:py-28 bg-gradient-to-br from-sky-50 via-white to-emerald-50 dark:from-gray-950 dark:via-gray-950 dark:to-black"
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <!-- Back Navigation -->
+    <div class="mb-8">
+      <a
+        href="{% url 'home' %}"
+        class="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+      >
+        <svg
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+        Back to Home
+      </a>
+    </div>
+
+    <!-- Article Header -->
+    <div class="mb-12 text-center">
+      <div class="mb-4">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/10"
+        >
+          <i class="ri-article-line"></i>
+          Article
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+        {{ article.title }}
+      </h1>
+
+      {% if article.excerpt %}
+      <p
+        class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+      >
+        {{ article.excerpt }}
+      </p>
+      {% endif %}
+
+      <!-- Article Meta -->
+      <div
+        class="flex items-center justify-center gap-6 mt-8 text-sm text-gray-500 dark:text-gray-400"
+      >
+        {% if article.author %}
+        <div class="flex items-center gap-2">
+          <i class="ri-user-line"></i>
+          <span
+            >{{ article.author.get_full_name|default:article.author.username
+            }}</span
+          >
+        </div>
+        {% endif %} {% if article.published_at %}
+        <div class="flex items-center gap-2">
+          <i class="ri-calendar-line"></i>
+          <span>{{ article.published_at|date:"F j, Y" }}</span>
+        </div>
+        {% endif %}
+
+        <div class="flex items-center gap-2">
+          <i class="ri-time-line"></i>
+          <span>{{ article.content|wordcount|floatformat:0 }} words</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Image -->
+    {% if article.image %}
+    <div class="mb-12">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+        <img
+          src="{{ article.image.url }}"
+          alt="{{ article.title }}"
+          class="w-full h-64 md:h-96 object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+        ></div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none dark:prose-invert">
+      <div
+        class="bg-white/80 dark:bg-white/5 backdrop-blur rounded-2xl p-8 md:p-12 border border-black/10 dark:border-white/10 shadow-sm"
+      >
+        <div class="text-gray-800 dark:text-gray-200 leading-relaxed text-lg">
+          {{ article.content|linebreaks }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Footer -->
+    <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Share Section -->
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+            >Share this article:</span
+          >
+          <div class="flex items-center gap-3">
+            <a
+              href="#"
+              class="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-400 transition-colors"
+            >
+              <i class="ri-twitter-line text-sm"></i>
+            </a>
+            <a
+              href="#"
+              class="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-400 transition-colors"
+            >
+              <i class="ri-linkedin-line text-sm"></i>
+            </a>
+            <a
+              href="#"
+              class="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-400 transition-colors"
+            >
+              <i class="ri-facebook-line text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Back to Top -->
+        <button
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+        >
+          <i class="ri-arrow-up-line"></i>
+          Back to top
+        </button>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-16">
+      <div
+        class="bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-blue-900/20 dark:to-emerald-900/20 rounded-2xl p-8 md:p-12 text-center border border-blue-100 dark:border-blue-800/30"
+      >
+        <h3 class="text-2xl font-bold mb-4">
+          Ready to Transform Your Business?
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+          Discover how our AI solutions can help you achieve similar results.
+          Get in touch with our experts today.
+        </p>
+        <a
+          href="{% url 'home' %}#contact"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+        >
+          Get Started
+          <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -102,8 +102,6 @@ class CaseStudy(TimeStampedModel):
 
 
 
-
-
 # article
 class Article(TimeStampedModel):
     title = models.CharField(max_length=255)
@@ -113,9 +111,11 @@ class Article(TimeStampedModel):
     status = models.CharField(
         max_length=16, choices=ArticleStatus.choices, default=ArticleStatus.DRAFT, db_index=True
     )
+    image = models.ImageField(upload_to="articles/", blank=True, null=True)
     published_at = models.DateTimeField(null=True, blank=True, db_index=True)
     author = models.ForeignKey(
-        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="articles")
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="articles"
+        )
 
     class Meta:
         indexes = [

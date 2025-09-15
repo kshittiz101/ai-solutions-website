@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %} AI‑Solutions — Digital Employee Experience{% endblock %}
+    </title>
+    <!-- Tailwind CSS via CDN (Play CDN suitable for prototyping) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- remix icons  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="{% static 'base/css/style.css' %}" />
+  </head>
+
+  <body
+    class="min-h-screen text-gray-900 dark:text-white bg-gradient-to-br from-sky-50 via-white to-emerald-50 text-gray-900 dark:from-gray-950 dark:via-gray-950 dark:to-black dark:text-white"
+  >
+    <!-- content -->
+    {% block content %} {% endblock %}
+
+    <!-- footer -->
+    {% include 'base/footer.html' %}
+
+    <!-- JS -->
+    <script src="{% static 'base/js/app.js' %}"></script>
+  </body>
+</html>

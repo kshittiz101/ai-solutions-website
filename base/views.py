@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Inquiry, CaseStudy
+from .models import Inquiry, CaseStudy, Article
 from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
@@ -75,15 +75,26 @@ def handle_inquiry_submission(request):
 def home(request):
     # get the first 3 case studies
     case_studies = CaseStudy.objects.all()[:3]
+    articles = Article.objects.all()[:3]
     if request.method == "POST":
         handle_inquiry_submission(request)
         return redirect("home")
 
     # FIX: pass toasts to the template
-    context = {"toasts": generate_toasts_from_messages(request), "case_studies": case_studies}
+    context = {
+     "toasts": generate_toasts_from_messages(request),
+     "case_studies": case_studies,
+     "articles": articles,
+    }
     return render(request, "base/index.html", context)
 
 
 def case_studies_details(request, slug):
     case_study = CaseStudy.objects.get(slug=slug)
     return render(request, "base/case-study/case-studies-details.html", {"case_study": case_study})
+
+
+
+def articles_details(request, slug):
+    article = Article.objects.get(slug=slug)
+    return render(request, "base/articles/articles-details.html", {"article": article})

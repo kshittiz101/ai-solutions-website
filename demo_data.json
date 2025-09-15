@@ -174,5 +174,54 @@
       "created_at": "2025-08-16T06:15:00Z",
       "updated_at": "2025-08-16T06:15:00Z"
     }
+  },
+
+  {
+    "model": "base.article",
+    "pk": 1,
+    "fields": {
+      "title": "AI Chat Support",
+      "slug": "ai-chat-support",
+      "content": "AI Chat Support is an intelligent customer service system powered by artificial intelligence. It provides instant responses to customer queries, reduces response times, and ensures 24/7 availability. By integrating natural language processing, AI Chat Support understands customer intent and delivers accurate answers, freeing support teams from repetitive tasks and improving customer satisfaction.",
+      "excerpt": "AI Chat Support uses AI to deliver fast, accurate, and always-available customer support.",
+      "status": "published",
+      "image": null,
+      "published_at": "2025-08-01T10:00:00Z",
+      "author": null,
+      "created_at": "2025-08-01T10:00:00Z",
+      "updated_at": "2025-08-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.article",
+    "pk": 2,
+    "fields": {
+      "title": "Unlocking Business Potential with AI-Powered Solutions",
+      "slug": "unlocking-business-potential-with-ai-powered-solutions",
+      "content": "Artificial Intelligence is now one of the most powerful enablers of business transformation. At AI-Solutions, we help organizations achieve efficiency and growth through workflow automation, predictive insights, conversational AI, and smart recommendations. Our solutions are built on scalable frameworks and designed with human-centric principles to ensure technology empowers people rather than replacing them.",
+      "excerpt": "Discover how AI-Solutions transforms workflows, empowers employees, and drives smarter business decisions.",
+      "status": "published",
+      "image": null,
+      "published_at": "2025-08-02T10:00:00Z",
+      "author": null,
+      "created_at": "2025-08-02T10:00:00Z",
+      "updated_at": "2025-08-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.article",
+    "pk": 3,
+    "fields": {
+      "title": "Designing People-First AI Assistants",
+      "slug": "designing-people-first-ai-assistants",
+      "content": "AI assistants are transforming the way employees and customers interact with technology. At AI-Solutions, we design people-first AI assistants that focus on empathy, accuracy, and usability. These assistants don’t just answer questions—they guide, recommend, and learn over time to create seamless digital experiences. By blending natural language understanding with business-specific knowledge, we ensure our assistants deliver real value in every interaction.",
+      "excerpt": "AI-Solutions builds people-first AI assistants that are empathetic, accurate, and business-aware.",
+      "status": "published",
+      "image": null,
+      "published_at": "2025-08-03T10:00:00Z",
+      "author": null,
+      "created_at": "2025-08-03T10:00:00Z",
+      "updated_at": "2025-08-03T10:00:00Z"
+    }
   }
 ]
