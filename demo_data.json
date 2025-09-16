@@ -223,5 +223,103 @@
       "created_at": "2025-08-03T10:00:00Z",
       "updated_at": "2025-08-03T10:00:00Z"
     }
+  },
+
+  {
+    "model": "base.event",
+    "pk": 1,
+    "fields": {
+      "title": "AI Summit 2025",
+      "description": "A global summit exploring AI in business, healthcare, and education.",
+      "slug": "ai-summit-2025",
+      "starts_at": "2025-10-15T09:00:00Z",
+      "ends_at": "2025-10-15T17:00:00Z",
+      "location": "London, UK",
+      "is_public": true,
+      "created_by": null,
+      "created_at": "2025-09-01T10:00:00Z",
+      "updated_at": "2025-09-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.event",
+    "pk": 2,
+    "fields": {
+      "title": "Hackathon Weekend",
+      "description": "48 hours of coding, design, and innovation for students and professionals.",
+      "slug": "hackathon-weekend",
+      "starts_at": "2025-11-01T18:00:00Z",
+      "ends_at": "2025-11-03T12:00:00Z",
+      "location": "San Francisco, CA",
+      "is_public": true,
+      "created_by": null,
+      "created_at": "2025-09-02T10:00:00Z",
+      "updated_at": "2025-09-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.event",
+    "pk": 3,
+    "fields": {
+      "title": "Product Launch – AI-Solutions X",
+      "description": "Official launch of our new AI-Solutions X platform with live demos.",
+      "slug": "product-launch-ai-solutions-x",
+      "starts_at": "2025-12-05T14:00:00Z",
+      "ends_at": "2025-12-05T16:00:00Z",
+      "location": "Online Webinar",
+      "is_public": true,
+      "created_by": 1,
+      "created_at": "2025-09-03T10:00:00Z",
+      "updated_at": "2025-09-03T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.event",
+    "pk": 4,
+    "fields": {
+      "title": "Tech Meetup – Sunderland",
+      "description": "Monthly networking meetup for developers, designers, and founders.",
+      "slug": "tech-meetup-sunderland",
+      "starts_at": "2025-09-25T18:30:00Z",
+      "ends_at": "2025-09-25T21:00:00Z",
+      "location": "Sunderland, UK",
+      "is_public": true,
+      "created_by": null,
+      "created_at": "2025-09-04T10:00:00Z",
+      "updated_at": "2025-09-04T10:00:00Z"
+    }
+  },
+  {
+    "model": "base.event",
+    "pk": 5,
+    "fields": {
+      "title": "End-of-Year Celebration",
+      "description": "A wrap-up celebration with highlights from our projects in 2025.",
+      "slug": "end-of-year-celebration",
+      "starts_at": "2025-12-30T19:00:00Z",
+      "ends_at": "2025-12-30T23:59:00Z",
+      "location": "New York, USA",
+      "is_public": true,
+      "created_by": null,
+      "created_at": "2025-09-05T10:00:00Z",
+      "updated_at": "2025-09-05T10:00:00Z"
+    }
+  },
+
+  {
+    "model": "base.event",
+    "pk": 6,
+    "fields": {
+      "title": "AI-Solutions X",
+      "description": "Official launch of our new AI-Solutions X platform with live demos.",
+      "slug": "ai-solutions-x",
+      "starts_at": "2025-12-30T19:00:00Z",
+      "ends_at": "2025-12-30T23:59:00Z",
+      "location": "Online Webinar",
+      "is_public": true,
+      "created_by": null,
+      "created_at": "2025-09-06T10:00:00Z",
+      "updated_at": "2025-09-06T10:00:00Z"
+    }
   }
 ]
