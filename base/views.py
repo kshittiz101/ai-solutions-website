@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.contrib.messages import get_messages
+from django.core.mail import  EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils import timezone
 
 # Phone number validator
 phone_validator = RegexValidator(
@@ -33,6 +36,26 @@ def generate_toasts_from_messages(request):
     return toasts
 
 # handle inquiry submission
+
+
+def send_auto_reply(customer_email, name):
+    context = {
+        "name": name,
+        "year": timezone.now().year,
+    }
+
+    subject = "Thanks for contacting AI-Solutions"
+    text_body = render_to_string("base/email/reply.txt", context)
+    html_body = render_to_string("base/email/reply.html", context)
+
+    msg = EmailMultiAlternatives(
+        subject=subject,
+        body=text_body,
+        from_email="support@ai-solutions.com",
+        to=[customer_email],
+    )
+    msg.attach_alternative(html_body, "text/html")
+    msg.send()
 
 
 def handle_inquiry_submission(request):
@@ -73,6 +96,8 @@ def handle_inquiry_submission(request):
             job_title=job_title,
             job_details=job_details,
         )
+        # send reply to the customer
+        send_auto_reply(email, name)
         messages.success(request, "Thank you! Your inquiry has been submitted successfully. We'll respond within 24 hours.")
         return True
 

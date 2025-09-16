@@ -80,3 +80,73 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   });
 });
+
+// Scroll Progress and Back to Top functionality
+window.addEventListener("scroll", function () {
+  // Scroll progress
+  const scrollProgress = document.getElementById("scroll-progress");
+  const backToTop = document.getElementById("back-to-top");
+
+  const scrollTop = window.pageYOffset;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+
+  if (scrollProgress) {
+    scrollProgress.style.width = scrollPercent + "%";
+  }
+
+  // Back to top button visibility
+  if (backToTop) {
+    if (scrollTop > 300) {
+      backToTop.classList.remove("opacity-0", "pointer-events-none");
+      backToTop.classList.add("opacity-100");
+    } else {
+      backToTop.classList.add("opacity-0", "pointer-events-none");
+      backToTop.classList.remove("opacity-100");
+    }
+  }
+});
+
+// Add smooth scroll behavior for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});
+
+// Back to Top functionality
+window.addEventListener("scroll", function () {
+  const backToTop = document.getElementById("back-to-top");
+  const scrollTop = window.pageYOffset;
+
+  if (backToTop) {
+    if (scrollTop > 300) {
+      backToTop.classList.remove("opacity-0", "pointer-events-none");
+      backToTop.classList.add("opacity-100");
+    } else {
+      backToTop.classList.add("opacity-0", "pointer-events-none");
+      backToTop.classList.remove("opacity-100");
+    }
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});

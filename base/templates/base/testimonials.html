@@ -1,166 +1,352 @@
-<section id="testimonials" class="py-16 md:py-24">
-  <div class="mx-auto max-w-3xl text-center mb-12">
+<section id="testimonials" class="py-20 md:py-28 relative overflow-hidden">
+  <!-- Background Elements -->
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-yellow-50/40 via-orange-50/20 to-red-50/30 dark:from-yellow-950/20 dark:via-orange-950/10 dark:to-red-950/10"
+  ></div>
+  <div
+    class="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-200/20 to-orange-200/20 dark:from-yellow-800/10 dark:to-orange-800/10 rounded-full blur-3xl translate-x-32"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-orange-200/20 to-red-200/20 dark:from-orange-800/10 dark:to-red-800/10 rounded-full blur-3xl -translate-x-24"
+  ></div>
+
+  <div class="relative z-10 mx-auto max-w-4xl text-center mb-16">
     <span
-      class="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1 text-xs font-semibold shadow-sm dark:border-white/10"
-      >What customers say</span
+      class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 backdrop-blur-sm px-4 py-2 text-sm font-semibold shadow-lg dark:border-white/10 dark:bg-gray-900/80"
     >
-    <h2 class="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
+      <i class="ri-star-line text-yellow-600 dark:text-yellow-400"></i>
+      What customers say
+    </span>
+    <h2
+      class="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl bg-gradient-to-r from-gray-900 via-yellow-800 to-orange-800 dark:from-white dark:via-yellow-200 dark:to-orange-200 bg-clip-text text-transparent"
+    >
       Customer feedback & ratings
     </h2>
+    <p
+      class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+    >
+      Hear from real customers who have transformed their business with our AI
+      solutions
+    </p>
   </div>
-  <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-    <!-- Testimonial -->
+  <div
+    class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3"
+  >
+    <!-- Enhanced Testimonial 1 -->
     <figure
-      class="rounded-2xl border border-black/10 p-6 shadow-sm dark:border-white/10"
+      class="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl p-8 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-200/50 dark:hover:border-yellow-400/30"
     >
-      <div class="mb-3 flex items-center gap-1" aria-label="Rating 5 of 5">
-        <!-- 5 stars -->
-        <template id="star-template"></template>
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
+      <!-- Background Gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-yellow-50/80 to-orange-50/80 dark:from-yellow-950/20 dark:to-orange-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      ></div>
+
+      <!-- Customer Avatar -->
+      <div class="relative z-10 mb-6 flex items-center gap-4">
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
         >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
+          P
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white">Priya S.</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Head of IT Ops</p>
+        </div>
       </div>
-      <blockquote class="text-gray-800 dark:text-gray-100">
-        “We saw measurable drops in MTTR within weeks. The assistant pays for
-        itself.”
+
+      <!-- Enhanced Rating -->
+      <div
+        class="relative z-10 mb-6 flex items-center gap-2"
+        aria-label="Rating 5 of 5"
+      >
+        <div class="flex items-center gap-1">
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+        </div>
+        <span class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >5.0</span
+        >
+      </div>
+
+      <!-- Quote Icon -->
+      <div class="relative z-10 mb-4">
+        <i
+          class="ri-double-quotes-l text-3xl text-yellow-500/30 dark:text-yellow-400/30"
+        ></i>
+      </div>
+
+      <!-- Testimonial Content -->
+      <blockquote
+        class="relative z-10 text-lg text-gray-800 dark:text-gray-100 leading-relaxed mb-6 font-medium"
+      >
+        "We saw measurable drops in MTTR within weeks. The assistant pays for
+        itself and has transformed our IT operations."
       </blockquote>
-      <figcaption class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        <span class="font-medium">Priya S.</span> · Head of IT Ops
-      </figcaption>
+
+      <!-- Company Info -->
+      <div
+        class="relative z-10 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"
+      >
+        <i class="ri-building-line"></i>
+        <span>Tech Solutions Inc.</span>
+      </div>
+
+      <!-- Hover Effect -->
+      <div
+        class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <i class="ri-star-fill text-yellow-400 text-lg"></i>
+      </div>
     </figure>
+    <!-- Enhanced Testimonial 2 -->
     <figure
-      class="rounded-2xl border border-black/10 p-6 shadow-sm dark:border-white/10"
+      class="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl p-8 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-blue-200/50 dark:hover:border-blue-400/30"
     >
-      <div class="mb-3 flex items-center gap-1" aria-label="Rating 5 of 5">
-        <!-- repeat stars -->
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
+      <!-- Background Gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-blue-50/80 to-purple-50/80 dark:from-blue-950/20 dark:to-purple-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      ></div>
+
+      <!-- Customer Avatar -->
+      <div class="relative z-10 mb-6 flex items-center gap-4">
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
         >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
+          L
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white">Liam O.</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Director of Engineering
+          </p>
+        </div>
       </div>
-      <blockquote class="text-gray-800 dark:text-gray-100">
-        “Prototyping went from months to days. Perfect for stakeholder buy‑in.”
+
+      <!-- Enhanced Rating -->
+      <div
+        class="relative z-10 mb-6 flex items-center gap-2"
+        aria-label="Rating 5 of 5"
+      >
+        <div class="flex items-center gap-1">
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+        </div>
+        <span class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >5.0</span
+        >
+      </div>
+
+      <!-- Quote Icon -->
+      <div class="relative z-10 mb-4">
+        <i
+          class="ri-double-quotes-l text-3xl text-blue-500/30 dark:text-blue-400/30"
+        ></i>
+      </div>
+
+      <!-- Testimonial Content -->
+      <blockquote
+        class="relative z-10 text-lg text-gray-800 dark:text-gray-100 leading-relaxed mb-6 font-medium"
+      >
+        "Prototyping went from months to days. Perfect for stakeholder buy‑in
+        and rapid iteration cycles."
       </blockquote>
-      <figcaption class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        <span class="font-medium">Liam O.</span> · Director of Engineering
-      </figcaption>
+
+      <!-- Company Info -->
+      <div
+        class="relative z-10 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"
+      >
+        <i class="ri-building-line"></i>
+        <span>InnovateCorp</span>
+      </div>
+
+      <!-- Hover Effect -->
+      <div
+        class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <i class="ri-star-fill text-yellow-400 text-lg"></i>
+      </div>
     </figure>
+    <!-- Enhanced Testimonial 3 -->
     <figure
-      class="rounded-2xl border border-black/10 p-6 shadow-sm dark:border-white/10"
+      class="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl p-8 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-green-200/50 dark:hover:border-green-400/30"
     >
-      <div class="mb-3 flex items-center gap-1" aria-label="Rating 5 of 5">
-        <svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
+      <!-- Background Gradient -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-green-50/80 to-emerald-50/80 dark:from-green-950/20 dark:to-emerald-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      ></div>
+
+      <!-- Customer Avatar -->
+      <div class="relative z-10 mb-6 flex items-center gap-4">
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
         >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          /></svg
-        ><svg
-          class="h-4 w-4 fill-yellow-400 text-yellow-400"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
-          />
-        </svg>
+          S
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900 dark:text-white">Sara K.</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            HR Technology Lead
+          </p>
+        </div>
       </div>
-      <blockquote class="text-gray-800 dark:text-gray-100">
-        “It actually helps people at work. Adoption was the easiest I've seen.”
+
+      <!-- Enhanced Rating -->
+      <div
+        class="relative z-10 mb-6 flex items-center gap-2"
+        aria-label="Rating 5 of 5"
+      >
+        <div class="flex items-center gap-1">
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+          <svg
+            class="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 .587 15.668 8.018 23.873 9.211 17.937 14.998 19.339 23.166 12 18.896 4.661 23.166 6.063 14.998 .127 9.211 8.332 8.018z"
+            />
+          </svg>
+        </div>
+        <span class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+          >5.0</span
+        >
+      </div>
+
+      <!-- Quote Icon -->
+      <div class="relative z-10 mb-4">
+        <i
+          class="ri-double-quotes-l text-3xl text-green-500/30 dark:text-green-400/30"
+        ></i>
+      </div>
+
+      <!-- Testimonial Content -->
+      <blockquote
+        class="relative z-10 text-lg text-gray-800 dark:text-gray-100 leading-relaxed mb-6 font-medium"
+      >
+        "It actually helps people at work. Adoption was the easiest I've seen
+        across our entire organization."
       </blockquote>
-      <figcaption class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        <span class="font-medium">Sara K.</span> · HR Technology Lead
-      </figcaption>
+
+      <!-- Company Info -->
+      <div
+        class="relative z-10 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400"
+      >
+        <i class="ri-building-line"></i>
+        <span>PeopleFirst Ltd.</span>
+      </div>
+
+      <!-- Hover Effect -->
+      <div
+        class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <i class="ri-star-fill text-yellow-400 text-lg"></i>
+      </div>
     </figure>
   </div>
 </section>
