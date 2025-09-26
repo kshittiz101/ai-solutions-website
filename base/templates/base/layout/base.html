@@ -46,6 +46,15 @@
     <!-- footer -->
     {% include 'base/components/footer.html' %}
 
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 p-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-40"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
     <!-- JS -->
     <script src="{% static 'base/js/app.js' %}"></script>
   </body>
