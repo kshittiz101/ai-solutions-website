@@ -7,27 +7,23 @@ Automation {% endblock %}
 <!-- content -->
 {% block content %}
 <!-- Main Container with Clean Background -->
-<main class="relative bg-gray-50">
+<main>
   <!-- Hero Section -->
   <div class="relative">{% include 'base/components/hero-section.html' %}</div>
 
-  <!-- Content Sections -->
-  <div class="space-y-16">
-    <!-- Features Section -->
-    <div class="bg-white">
-      {% include 'base/components/features-solution.html' %}
-    </div>
+  <!-- Features Section -->
 
-    <!-- Case Studies Section -->
-    <div class="bg-gray-50">
-      {% include 'base/components/case-study/recent-case-studies.html' %}
-    </div>
+  {% include 'base/components/features-solution.html' %}
 
-    <!-- Testimonials Section -->
-    <div class="bg-white">
-      {% include 'base/components/testimonials.html' %}
-    </div>
-  </div>
+  <!-- Case Studies Section -->
+
+  {% include 'base/components/case-study/recent-case-studies.html' %}
+
+  <!-- testimonials section -->
+  {% include 'base/components/testimonials.html' %}
+
+  <!-- cta section  -->
+  {% include 'base/components/cta.html' %}
 </main>
 
 <!-- Back to Top Button -->
