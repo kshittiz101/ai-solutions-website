@@ -6,148 +6,33 @@ Automation {% endblock %}
 
 <!-- content -->
 {% block content %}
-<!-- Enhanced Main Container with Synchronized Background -->
-<main class="relative overflow-hidden">
-  <!-- Global Background Pattern -->
-  <div
-    class="fixed inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 -z-10"
-  ></div>
-  <div
-    class="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] -z-10"
-  ></div>
-  <div
-    class="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_80%_50%,rgba(120,198,120,0.15),rgba(255,255,255,0))] -z-10"
-  ></div>
-  <div
-    class="fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_80%,rgba(198,120,120,0.15),rgba(255,255,255,0))] -z-10"
-  ></div>
-
+<!-- Main Container with Clean Background -->
+<main class="relative bg-gray-50">
   <!-- Hero Section -->
   <div class="relative">{% include 'base/hero-section.html' %}</div>
 
-  <!-- Content Sections with Enhanced Spacing -->
-  <div class="relative space-y-0">
+  <!-- Content Sections -->
+  <div class="space-y-16">
     <!-- Features Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-transparent"
-      ></div>
-      {% include 'base/features-solution.html' %}
-    </div>
+    <div class="bg-white">{% include 'base/features-solution.html' %}</div>
 
     <!-- Case Studies Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/30 to-transparent"
-      ></div>
+    <div class="bg-gray-50">
       {% include 'base/case-study/case-studies.html' %}
     </div>
 
     <!-- Testimonials Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-800/40 to-transparent"
-      ></div>
-      {% include 'base/testimonials.html' %}
-    </div>
-
-    <!-- Articles Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/25 to-transparent"
-      ></div>
-      {% include 'base/articles/articles.html' %}
-    </div>
-
-    <!-- Events Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/35 to-transparent"
-      ></div>
-      {% include 'base/events/events.html' %}
-    </div>
-
-    <!-- Contact Section -->
-    <div class="relative">
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-slate-900 via-gray-900/50 to-transparent"
-      ></div>
-      {% include 'base/contacts.html' %}
-    </div>
+    <div class="bg-white">{% include 'base/testimonials.html' %}</div>
   </div>
-
-  <!-- Floating Elements for Visual Appeal -->
-  <div
-    class="fixed top-1/4 left-0 w-2 h-32 bg-gradient-to-b from-cyan-500/20 to-transparent rounded-r-full -z-10"
-  ></div>
-  <div
-    class="fixed top-2/3 right-0 w-2 h-24 bg-gradient-to-b from-purple-500/20 to-transparent rounded-l-full -z-10"
-  ></div>
-  <div
-    class="fixed bottom-1/4 left-1/4 w-1 h-20 bg-gradient-to-t from-emerald-500/20 to-transparent rounded-full -z-10"
-  ></div>
 </main>
-
-<!-- Scroll Progress Indicator -->
-<div class="fixed top-0 left-0 w-full h-1 bg-gray-800/50 z-50">
-  <div
-    id="scroll-progress"
-    class="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 transition-all duration-300"
-    style="width: 0%"
-  ></div>
-</div>
 
 <!-- Back to Top Button -->
 <button
   id="back-to-top"
-  class="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-cyan-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-40 group"
+  class="fixed bottom-8 right-8 p-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-40"
   onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
 >
-  <i
-    class="ri-arrow-up-line text-xl group-hover:scale-110 transition-transform duration-300"
-  ></i>
+  <i class="ri-arrow-up-line text-xl"></i>
 </button>
 
-<script>
-  // Scroll Progress and Back to Top functionality
-  window.addEventListener("scroll", function () {
-    // Scroll progress
-    const scrollProgress = document.getElementById("scroll-progress");
-    const backToTop = document.getElementById("back-to-top");
-
-    const scrollTop = window.pageYOffset;
-    const docHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-
-    if (scrollProgress) {
-      scrollProgress.style.width = scrollPercent + "%";
-    }
-
-    // Back to top button visibility
-    if (backToTop) {
-      if (scrollTop > 300) {
-        backToTop.classList.remove("opacity-0", "pointer-events-none");
-        backToTop.classList.add("opacity-100");
-      } else {
-        backToTop.classList.add("opacity-0", "pointer-events-none");
-        backToTop.classList.remove("opacity-100");
-      }
-    }
-  });
-
-  // Add smooth scroll behavior for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
-</script>
 {% endblock %}

@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (scrollTop > 50) {
         // Add background when scrolled
-        navbarBg.style.backgroundColor = "#0F2229";
-        navbarBg.style.borderBottomColor = "rgba(6, 182, 212, 0.2)";
+        navbarBg.style.backgroundColor = "#1F2937";
+        navbarBg.style.borderBottomColor = "rgba(59, 130, 246, 0.2)";
         navbarBg.classList.remove("border-transparent");
       } else {
         // Remove background when at top
@@ -81,19 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Scroll Progress and Back to Top functionality
+// Back to Top functionality
 window.addEventListener("scroll", function () {
-  // Scroll progress
-  const scrollProgress = document.getElementById("scroll-progress");
   const backToTop = document.getElementById("back-to-top");
-
   const scrollTop = window.pageYOffset;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-
-  if (scrollProgress) {
-    scrollProgress.style.width = scrollPercent + "%";
-  }
 
   // Back to top button visibility
   if (backToTop) {

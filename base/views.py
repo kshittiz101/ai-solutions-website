@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.contrib.messages import get_messages
-from django.core.mail import  EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils import timezone
 
@@ -82,7 +82,8 @@ def handle_inquiry_submission(request):
         try:
             phone_validator(phone)
         except ValidationError:
-            messages.error(request, "Enter a valid phone number with country code (e.g. +977-9812345678)")
+            messages.error(
+                request, "Enter a valid phone number with country code (e.g. +977-9812345678)")
             return False
 
     try:
@@ -98,7 +99,8 @@ def handle_inquiry_submission(request):
         )
         # send reply to the customer
         send_auto_reply(email, name)
-        messages.success(request, "Thank you! Your inquiry has been submitted successfully. We'll respond within 24 hours.")
+        messages.success(
+            request, "Thank you! Your inquiry has been submitted successfully. We'll respond within 24 hours.")
         return True
 
     except Exception as e:
@@ -116,10 +118,10 @@ def home(request):
         return redirect("home")
 
     context = {
-     "toasts": generate_toasts_from_messages(request),
-     "case_studies": case_studies,
-     "articles": articles,
-     "events": events,
+        "toasts": generate_toasts_from_messages(request),
+        "case_studies": case_studies,
+        "articles": articles,
+        "events": events,
     }
     return render(request, "base/index.html", context)
 
@@ -127,7 +129,6 @@ def home(request):
 def case_studies_details(request, slug):
     case_study = CaseStudy.objects.get(slug=slug)
     return render(request, "base/case-study/case-studies-details.html", {"case_study": case_study})
-
 
 
 def articles_details(request, slug):
@@ -138,3 +139,10 @@ def articles_details(request, slug):
 def events_details(request, slug):
     event = Event.objects.get(slug=slug)
     return render(request, "base/events/events-details.html", {"event": event})
+
+
+
+
+def all_events(request):
+    events = Event.objects.all()
+    return render(request, "base/events/all-events.html", {"events": events})
