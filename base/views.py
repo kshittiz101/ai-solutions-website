@@ -1,3 +1,7 @@
+from .models import CaseStudy
+from django.db.models import Count
+from django.core.paginator import Paginator
+from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .models import Inquiry, CaseStudy, Article, Event
 from django.contrib import messages
@@ -123,9 +127,7 @@ def home(request):
     return render(request, "base/pages/index.html", context)
 
 
-def case_studies_details(request, slug):
-    case_study = CaseStudy.objects.get(slug=slug)
-    return render(request, "base/case-study/case-studies-details.html", {"case_study": case_study})
+
 
 
 def articles_details(request, slug):
@@ -142,6 +144,22 @@ def all_events(request):
     events = Event.objects.all()
     return render(request, "base/events/all-events.html", {"events": events})
 
+
+# apps/case_studies/views.py
+
+
+def case_study_list(request):
+    case_studies = CaseStudy.objects.all()
+
+    context = {
+        "case_studies": case_studies,
+    }
+    return render(request, "base/pages/case-study.html", context)
+
+
+def case_studies_details(request, slug):
+    case_study = CaseStudy.objects.get(slug=slug)
+    return render(request, "base/pages/case-studies-details.html", {"case_study": case_study})
 
 def contact(request):
     if request.method == "POST":

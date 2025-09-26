@@ -1,0 +1,229 @@
+{% extends 'base/layout/base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %}Case Studies - AI Solutions{% endblock %}
+
+<!-- content -->
+{% block content %}
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <section
+    id="case-studies-hero"
+    class="bg-gradient-to-br from-cyan-50/30 via-teal-50/20 to-emerald-50/30 dark:from-cyan-950/10 dark:via-teal-950/10 dark:to-emerald-950/10 min-h-[85vh] flex flex-col"
+  >
+    <div class="flex-1 flex items-center justify-center">
+      <div class="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <!-- Section Label -->
+        <div
+          class="text-center text-base text-cyan-600 border border-cyan-600 rounded-full px-4 py-2 font-bold mb-6 max-w-[200px] mx-auto"
+        >
+          Case Studies
+        </div>
+
+        <!-- Headline & Subhead -->
+        <div class="text-center">
+          <h1
+            class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+          >
+            Proof that our work
+            <span
+              class="bg-gradient-to-r from-teal-700 to-emerald-700 dark:from-teal-300 dark:to-emerald-300 bg-clip-text text-transparent"
+            >
+              drives real results
+            </span>
+          </h1>
+          <p
+            class="mt-4 text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-300"
+          >
+            Explore practical wins across industries—faster delivery, lower
+            costs, and happier customers.
+          </p>
+
+          <!-- CTAs -->
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="{% url 'case-study' %}#all-case-studies"
+              class="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-white font-semibold shadow hover:bg-teal-700 transition focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+            >
+              <i class="ri-compass-3-line"></i>
+              Browse case studies
+            </a>
+            <a
+              href="{% url 'contact' %}"
+              class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-900 hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+            >
+              <i class="ri-mail-send-line"></i>
+              Start your project
+            </a>
+          </div>
+        </div>
+
+        <!-- Mini Stats -->
+        <dl class="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto">
+          <div
+            class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5"
+          >
+            <dt class="text-xs text-gray-500 dark:text-gray-300/80">
+              Avg. ROI
+            </dt>
+            <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">
+              4.7×
+            </dd>
+          </div>
+          <div
+            class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5"
+          >
+            <dt class="text-xs text-gray-500 dark:text-gray-300/80">
+              Time to MVP
+            </dt>
+            <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">
+              3–6 wks
+            </dd>
+          </div>
+          <div
+            class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-white/10 dark:bg-white/5"
+          >
+            <dt class="text-xs text-gray-500 dark:text-gray-300/80">NPS</dt>
+            <dd class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">
+              72
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple Filters -->
+
+  <section class="w-full bg-gray-200" id="all-case-studies">
+    <section id="filters" class="border-t border-gray-200 dark:border-gray-800">
+      <div class="mx-auto max-w-7xl px-6 py-6">
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+          <!-- Search -->
+          <label class="relative w-full sm:w-64">
+            <i
+              class="ri-search-2-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              placeholder="Search case studies"
+              class="w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 pl-10 pr-3 py-2.5 text-sm text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+          </label>
+
+          <!-- Industry -->
+          <select
+            class="rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2.5 text-sm text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          >
+            <option>All industries</option>
+            <option>Healthcare</option>
+            <option>Fintech</option>
+            <option>Retail</option>
+            <option>Education</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Cards Grid -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {% for cs in case_studies %}
+        <article
+          class="group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+        >
+          <!-- Image -->
+          <div class="aspect-[16/10] overflow-hidden">
+            <img
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              src="{% if cs.image %}{{ cs.image.url }}{% else %}{% static 'base/images/hero-image.png' %}{% endif %}"
+              alt="{{ cs.title }}"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <!-- Solution Tags -->
+            <div class="flex flex-wrap gap-2 mb-3">
+              {% with sol_list=cs.solutions.all %}
+
+              <!-- slice the first 2 solutions -->
+              {% for sol in sol_list|slice:":2" %}
+              <span
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700"
+              >
+                {{ sol.title }}
+              </span>
+              {% endfor %} {% if sol_list|length > 2 %}
+              <span
+                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600"
+              >
+                +{{ sol_list|length|add:"-2" }} more
+              </span>
+              {% endif %} {% endwith %}
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+              {{ cs.title }}
+            </h3>
+
+            <!-- Summary -->
+            {% if cs.summary %}
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+              {{ cs.summary|truncatechars:120 }}
+            </p>
+            {% endif %}
+
+            <!-- CTA -->
+            <a
+              href="{% url 'case_studies_details' cs.slug %}"
+              class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              Read case study
+              <svg
+                class="ml-1 w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        {% empty %}
+        <div class="col-span-full text-center py-16">
+          <div class="text-gray-400 mb-4">
+            <svg
+              class="mx-auto h-12 w-12"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">
+            No case studies found
+          </h3>
+          <p class="text-gray-500">Check back later for new case studies.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+</div>
+{% endblock %}

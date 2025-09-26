@@ -1,144 +1,85 @@
-<!-- ENHANCED CASE STUDIES SECTION -->
-<section id="cases" class="py-20 md:py-28 relative overflow-hidden">
-  <!-- Background Elements -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-indigo-50/30 via-purple-50/20 to-pink-50/30 dark:from-indigo-950/10 dark:via-purple-950/10 dark:to-pink-950/10"
-  ></div>
-  <div
-    class="absolute top-0 right-1/3 w-80 h-80 bg-gradient-to-bl from-indigo-200/20 to-purple-200/20 dark:from-indigo-800/10 dark:to-purple-800/10 rounded-full blur-3xl"
-  ></div>
+<section
+  id="cases"
+  class="bg-[#0E1A2B] min-h-[100vh] flex items-center justify-center"
+>
+  <div class="w-full">
+    <!-- Section Heading -->
+    <div class="mx-auto mb-16 max-w-4xl text-center">
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold shadow-sm dark:border-gray-700 dark:bg-gray-900 bg-orange-500"
+      >
+        <i class="ri-trophy-line text-indigo-600 dark:text-indigo-400"></i>
+        Case Studies
+      </span>
+      <h2
+        class="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl text-white"
+      >
+        Highlights from recent solutions
+      </h2>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        Explore measurable results from our design, engineering, and AI
+        solutions.
+      </p>
+    </div>
 
-  <div class="relative z-10 mx-auto mb-16 max-w-4xl text-center">
-    <span
-      class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 backdrop-blur-sm px-4 py-2 text-sm font-semibold shadow-lg dark:border-white/10 dark:bg-gray-900/80"
+    <!-- Card Grid -->
+    <div
+      class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3"
     >
-      <i class="ri-trophy-line text-indigo-600 dark:text-indigo-400"></i>
-      Proven impact with Case Studies
-    </span>
-    <h2
-      class="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-800 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent"
-    >
-      Highlights from recent solutions
-    </h2>
-    <p
-      class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
-    >
-      Credibility across design, engineering, and IT operations with measurable
-      results
-    </p>
-  </div>
-
-  <div
-    class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3"
-  >
-    {% for case_study in case_studies %}
-    <article
-      class="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-200/50 dark:hover:border-indigo-400/30"
-    >
-      <!-- Enhanced Image -->
-      <div class="relative w-full h-[240px] overflow-hidden">
-        {% if case_study.image %}
-        <img
-          src="{{ case_study.image.url }}"
-          alt="{{ case_study.title }}"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        ></div>
-        {% else %}
-        <div
-          class="w-full h-full bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 flex items-center justify-center"
-        >
-          <div class="text-center">
+      {% for case_study in case_studies %}
+      <article
+        class="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+      >
+        <!-- Image -->
+        <div class="relative w-full h-[200px] overflow-hidden rounded-t-2xl">
+          {% if case_study.image %}
+          <img
+            src="{{ case_study.image.url }}"
+            alt="{{ case_study.title }}"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+          {% else %}
+          <div
+            class="w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800"
+          >
             <i
-              class="ri-trophy-line text-5xl text-indigo-600 dark:text-indigo-400 mb-2"
+              class="ri-trophy-line text-4xl text-indigo-500 dark:text-indigo-300"
             ></i>
-            <p class="text-sm text-indigo-700 dark:text-indigo-300 font-medium">
-              Case Study
-            </p>
           </div>
+          {% endif %}
         </div>
-        {% endif %}
 
-        <!-- Success Badge -->
-        <div class="absolute top-4 right-4">
+        <!-- Card Body -->
+        <div class="p-6">
+          <h3
+            class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+          >
+            {{ case_study.title }}
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+            {{ case_study.summary }}
+          </p>
           <div
-            class="px-3 py-1 bg-green-500/90 backdrop-blur-sm text-white text-xs font-semibold rounded-full"
+            class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4"
           >
-            Success Story
+            <span class="flex items-center gap-1">
+              <i class="ri-building-line"></i> {{ case_study.client_company }}
+            </span>
+            <span class="flex items-center gap-1">
+              <i class="ri-user-line"></i> {{ case_study.client_name }}
+            </span>
           </div>
+          <a
+            href="{% url 'case_studies_details' slug=case_study.slug %}"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition"
+          >
+            Read case study
+            <i class="ri-arrow-right-line"></i>
+          </a>
         </div>
-      </div>
-
-      <!-- Enhanced Card Body -->
-      <div class="relative p-6">
-        <!-- Job Title -->
-        <div class="mb-3">
-          <span
-            class="px-3 py-1 text-xs font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-full"
-          >
-            {{ case_study.client_job_title }}
-          </span>
-        </div>
-
-        <!-- Title -->
-        <h3
-          class="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-indigo-700 dark:group-hover:text-indigo-300 transition-colors duration-300"
-        >
-          {{ case_study.title }}
-        </h3>
-
-        <!-- Summary -->
-        <p
-          class="text-gray-600 dark:text-gray-300 line-clamp-3 leading-relaxed mb-4"
-        >
-          {{ case_study.summary }}
-        </p>
-
-        <!-- Client Info -->
-        <div class="flex items-center justify-between mb-4">
-          <div
-            class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
-          >
-            <i class="ri-building-line"></i>
-            <span>{{ case_study.client_company }}</span>
-          </div>
-          <div
-            class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
-          >
-            <i class="ri-user-line"></i>
-            <span>{{ case_study.client_name }}</span>
-          </div>
-        </div>
-
-        <!-- Enhanced Link -->
-        <a
-          href="{% url 'case_studies_details' slug=case_study.slug %}"
-          class="group/btn inline-flex items-center gap-2 w-full justify-center px-4 py-3 text-sm font-semibold text-indigo-600 hover:text-white dark:text-indigo-400 dark:hover:text-white bg-indigo-50 hover:bg-indigo-600 dark:bg-indigo-900/20 dark:hover:bg-indigo-600 rounded-xl transition-all duration-300 border border-indigo-200 hover:border-indigo-600 dark:border-indigo-800 dark:hover:border-indigo-600"
-        >
-          Read case study
-          <svg
-            class="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- Hover Effect Gradient -->
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-indigo-50/10 to-purple-50/10 dark:from-indigo-950/10 dark:to-purple-950/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-      ></div>
-    </article>
-    {% endfor %}
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
