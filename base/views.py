@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from .models import Inquiry, CaseStudy, Article, Event
+from .models import Inquiry, CaseStudy, Blog, Event
 from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
@@ -115,13 +115,12 @@ def handle_inquiry_submission(request):
 def home(request):
     # get the first 3 case studies
     case_studies = CaseStudy.objects.all()[:3]
-    articles = Article.objects.all()[:3]
+    blogs = Blog.objects.filter(status='published')[:3]
     events = Event.objects.all()[:6]
 
     context = {
-
         "case_studies": case_studies,
-        "articles": articles,
+        "blogs": blogs,
         "events": events,
     }
     return render(request, "base/pages/index.html", context)
@@ -129,10 +128,18 @@ def home(request):
 
 
 
+def blogs_page(request):
+    blogs = Blog.objects.filter(status='published').order_by('-published_at')
+    context = {
+        "blogs": blogs,
+    }
+    return render(request, "base/pages/blogs.html", context)
 
-def articles_details(request, slug):
-    article = Article.objects.get(slug=slug)
-    return render(request, "base/articles/articles-details.html", {"article": article})
+
+
+def blogs_details(request, slug):
+    blog = Blog.objects.get(slug=slug)
+    return render(request, "base/pages/blogs-details.html", {"blog": blog})
 
 
 def events_details(request, slug):

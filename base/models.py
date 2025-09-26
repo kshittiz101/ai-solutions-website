@@ -102,8 +102,8 @@ class CaseStudy(TimeStampedModel):
 
 
 
-# article
-class Article(TimeStampedModel):
+# blog
+class Blog(TimeStampedModel):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     content = models.TextField()
@@ -111,10 +111,10 @@ class Article(TimeStampedModel):
     status = models.CharField(
         max_length=16, choices=ArticleStatus.choices, default=ArticleStatus.DRAFT, db_index=True
     )
-    image = models.ImageField(upload_to="articles/", blank=True, null=True)
+    image = models.ImageField(upload_to="blogs/", blank=True, null=True)
     published_at = models.DateTimeField(null=True, blank=True, db_index=True)
     author = models.ForeignKey(
-        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="articles"
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="blogs"
         )
 
     class Meta:
@@ -129,7 +129,7 @@ class Article(TimeStampedModel):
     def save(self, *args, **kwargs):
         # Auto-slug if empty
         if not self.slug:
-            self.slug = generate_slug(self.title, Article)
+            self.slug = generate_slug(self.title, Blog)
         super().save(*args, **kwargs)
 
 # event

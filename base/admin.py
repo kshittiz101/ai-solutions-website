@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Event, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy
+from .models import Blog, Event, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy
 
 
 # software solution
@@ -32,7 +32,7 @@ class CaseStudyAdmin(admin.ModelAdmin):
         return super().save_model(request, obj, form, change)
 
 
-class ArticleAdmin(admin.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'published_at', 'author')
     list_filter = ('status', 'published_at')
     search_fields = ('title', 'content')
@@ -70,7 +70,7 @@ class InquiryResponseAdmin(admin.ModelAdmin):
 # register models
 admin.site.register(SoftwareSolution, SoftwareSolutionAdmin)
 admin.site.register(CaseStudy, CaseStudyAdmin)
-admin.site.register(Article, ArticleAdmin)
+admin.site.register(Blog, BlogAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Inquiry, InquiryAdmin)
 admin.site.register(InquiryResponse, InquiryResponseAdmin)
