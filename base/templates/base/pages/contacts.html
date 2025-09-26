@@ -1,5 +1,15 @@
+{% extends 'base/layout/base.html' %}
+
+<!-- title -->
+{% block title %} Contact Us {% endblock %}
+
+<!-- content  -->
+{% block content %}
 <!-- ENHANCED CONTACT SECTION -->
-<section id="contact" class="py-20 md:py-28 relative overflow-hidden">
+<section
+  id="contact"
+  class="py-20 md:py-28 relative overflow-hidden min-h-[80vh]"
+>
   <!-- Background Elements -->
   <div
     class="absolute inset-0 bg-gradient-to-br from-cyan-50/30 via-teal-50/20 to-emerald-50/30 dark:from-cyan-950/10 dark:via-teal-950/10 dark:to-emerald-950/10"
@@ -393,3 +403,4 @@
     </div>
   </div>
 </section>
+{% endblock %}

@@ -31,20 +31,20 @@
       {% for t in toasts %}
 
       <!-- include toasts -->
-      {% include "base/toast.html" with text=t.text color=t.color %}
+      {% include "base/components/toast.html" with text=t.text color=t.color %}
       <!-- message end  -->
       {% endfor %}
     </div>
     {% endif %}
 
     <!-- NAV -->
-    {% include 'base/navbar.html' %}
+    {% include 'base/components/navbar.html' %}
 
     <!-- content -->
     {% block content %} {% endblock %}
 
     <!-- footer -->
-    {% include 'base/footer.html' %}
+    {% include 'base/components/footer.html' %}
 
     <!-- JS -->
     <script src="{% static 'base/js/app.js' %}"></script>

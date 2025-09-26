@@ -45,8 +45,8 @@ def send_auto_reply(customer_email, name):
     }
 
     subject = "Thanks for contacting AI-Solutions"
-    text_body = render_to_string("base/email/reply.txt", context)
-    html_body = render_to_string("base/email/reply.html", context)
+    text_body = render_to_string("base/components/email/reply.txt", context)
+    html_body = render_to_string("base/components/email/reply.html", context)
 
     msg = EmailMultiAlternatives(
         subject=subject,
@@ -113,17 +113,14 @@ def home(request):
     case_studies = CaseStudy.objects.all()[:3]
     articles = Article.objects.all()[:3]
     events = Event.objects.all()[:6]
-    if request.method == "POST":
-        handle_inquiry_submission(request)
-        return redirect("home")
 
     context = {
-        "toasts": generate_toasts_from_messages(request),
+
         "case_studies": case_studies,
         "articles": articles,
         "events": events,
     }
-    return render(request, "base/index.html", context)
+    return render(request, "base/pages/index.html", context)
 
 
 def case_studies_details(request, slug):
@@ -141,8 +138,17 @@ def events_details(request, slug):
     return render(request, "base/events/events-details.html", {"event": event})
 
 
-
-
 def all_events(request):
     events = Event.objects.all()
     return render(request, "base/events/all-events.html", {"events": events})
+
+
+def contact(request):
+    if request.method == "POST":
+        handle_inquiry_submission(request)
+        return redirect("contact")
+
+    context = {
+        "toasts": generate_toasts_from_messages(request)
+    }
+    return render(request, "base/pages/contacts.html", context=context)
