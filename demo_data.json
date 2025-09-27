@@ -177,7 +177,7 @@
   },
 
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 1,
     "fields": {
       "title": "AI Chat Support: Revolutionizing Customer Service",
@@ -193,7 +193,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 2,
     "fields": {
       "title": "Unlocking Business Potential with AI-Powered Solutions",
@@ -209,7 +209,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 3,
     "fields": {
       "title": "Designing People-First AI Assistants",
@@ -225,7 +225,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 4,
     "fields": {
       "title": "The Future of Machine Learning in Healthcare",
@@ -241,7 +241,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 5,
     "fields": {
       "title": "Building Ethical AI: A Guide for Businesses",
@@ -257,7 +257,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 6,
     "fields": {
       "title": "Natural Language Processing: Breaking Down Language Barriers",
@@ -273,7 +273,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 7,
     "fields": {
       "title": "Computer Vision: Seeing the World Through AI Eyes",
@@ -289,7 +289,7 @@
     }
   },
   {
-    "model": "base.blog",
+    "model": "base.article",
     "pk": 8,
     "fields": {
       "title": "AI in Finance: Transforming the Financial Industry",

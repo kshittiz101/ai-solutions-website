@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from .models import Inquiry, CaseStudy, Blog, Event
+from .models import Inquiry, CaseStudy, Article, Event
 from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
@@ -115,12 +115,12 @@ def handle_inquiry_submission(request):
 def home(request):
     # get the first 3 case studies
     case_studies = CaseStudy.objects.all()[:3]
-    blogs = Blog.objects.filter(status='published')[:3]
+    articles = Article.objects.filter(status='published')[:3]
     events = Event.objects.all()[:6]
 
     context = {
         "case_studies": case_studies,
-        "blogs": blogs,
+        "articles": articles,
         "events": events,
     }
     return render(request, "base/pages/index.html", context)
@@ -128,31 +128,32 @@ def home(request):
 
 
 
-def blogs_page(request):
-    blogs = Blog.objects.filter(status='published').order_by('-published_at')
+def articles_page(request):
+    articles = Article.objects.filter(status='published').order_by('-published_at')
     context = {
-        "blogs": blogs,
+        "articles": articles,
     }
-    return render(request, "base/pages/blogs.html", context)
+    return render(request, "base/pages/articles.html", context)
 
 
 
-def blogs_details(request, slug):
-    blog = Blog.objects.get(slug=slug)
-    return render(request, "base/pages/blogs-details.html", {"blog": blog})
+def articles_details(request, slug):
+    article = Article.objects.get(slug=slug)
+    return render(request, "base/pages/articles-details.html", {"article": article})
+
+
+
+
+def all_events_page(request):
+    events = Event.objects.all().order_by('starts_at')
+    return render(request, "base/pages/events.html", {"events": events})
 
 
 def events_details(request, slug):
     event = Event.objects.get(slug=slug)
-    return render(request, "base/events/events-details.html", {"event": event})
+    return render(request, "base/pages/events-details.html", {"event": event})
 
 
-def all_events(request):
-    events = Event.objects.all()
-    return render(request, "base/events/all-events.html", {"events": events})
-
-
-# apps/case_studies/views.py
 
 
 def case_study_list(request):
