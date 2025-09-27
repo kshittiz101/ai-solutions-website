@@ -166,20 +166,19 @@
 
             <!-- Solution Tags -->
             <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-              {% with sol_list=cs.solutions.all %} {% for sol in
-              sol_list|slice:":2" %}
+              {% for sol in cs.solutions.all|slice:":2" %}
               <span
                 class="px-2 py-1 text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full"
               >
                 {{ sol.title }}
               </span>
-              {% endfor %} {% if sol_list|length > 2 %}
+              {% endfor %} {% if cs.solutions.all|length > 2 %}
               <span
                 class="px-2 py-1 text-xs font-semibold bg-white/90 text-gray-600 dark:bg-gray-800/90 dark:text-gray-300 rounded-full"
               >
-                +{{ sol_list|length|add:"-2" }} more
+                +{{ cs.solutions.all|length|add:"-2" }} more
               </span>
-              {% endif %} {% endwith %}
+              {% endif %}
             </div>
           </div>
 

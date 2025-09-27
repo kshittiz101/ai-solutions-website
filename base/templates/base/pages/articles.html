@@ -200,15 +200,6 @@
 
         <!-- Read Time Estimate -->
         <div class="flex items-center justify-between mb-4">
-          <span
-            class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1"
-          >
-            <i class="ri-time-line"></i>
-            {{
-            article.content|length|floatformat:0|add:0|div:200|floatformat:0|add:1
-            }} min read
-          </span>
-
           <!-- Status Tag -->
           {% if article.status == 'published' %}
           <span
