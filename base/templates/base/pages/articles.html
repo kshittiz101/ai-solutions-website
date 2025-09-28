@@ -198,18 +198,6 @@
           {{ article.excerpt }}
         </p>
 
-        <!-- Read Time Estimate -->
-        <div class="flex items-center justify-between mb-4">
-          <!-- Status Tag -->
-          {% if article.status == 'published' %}
-          <span
-            class="px-2 py-1 text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-full"
-          >
-            Published
-          </span>
-          {% endif %}
-        </div>
-
         <!-- Read More Button -->
         <a
           href="{% url 'articles_details' article.slug %}"
