@@ -47,7 +47,8 @@ class Direction(models.TextChoices):
 class SoftwareSolution(TimeStampedModel):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
-    image = models.ImageField(upload_to="software_solutions/", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="software_solutions/", blank=True, null=True)
     description = models.TextField(blank=True)  # describe the system
     published_at = models.DateTimeField(null=True, blank=True, db_index=True)
     created_by = models.ForeignKey(User, null=True, blank=True,
@@ -64,7 +65,6 @@ class SoftwareSolution(TimeStampedModel):
         if not self.slug:
             self.slug = generate_slug(self.title, SoftwareSolution)
         super().save(*args, **kwargs)
-
 
 
 # case study
@@ -86,7 +86,8 @@ class CaseStudy(TimeStampedModel):
                                    on_delete=models.SET_NULL, related_name="case_studies")
 
     # Optional: link to one or more solutions
-    solutions = models.ManyToManyField(SoftwareSolution, blank=True, related_name="case_studies")
+    solutions = models.ManyToManyField(
+        SoftwareSolution, blank=True, related_name="case_studies")
 
     class Meta:
         indexes = [models.Index(fields=["slug"])]
@@ -101,11 +102,10 @@ class CaseStudy(TimeStampedModel):
         super().save(*args, **kwargs)
 
 
-
 # article
 class Article(TimeStampedModel):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255, unique=True, editable=False)
     content = models.TextField()
     excerpt = models.TextField(blank=True)
     status = models.CharField(
@@ -115,7 +115,7 @@ class Article(TimeStampedModel):
     published_at = models.DateTimeField(null=True, blank=True, db_index=True)
     author = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.SET_NULL, related_name="articles"
-        )
+    )
 
     class Meta:
         indexes = [
@@ -165,9 +165,6 @@ class Event(TimeStampedModel):
 
     def __str__(self):
         return self.title
-
-
-
 
 
 # inquiry
