@@ -89,8 +89,9 @@ WSGI_APPLICATION = 'config.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# Use environment variable for database URL in production (e.g., PostgreSQL on Vercel)
-# For SQLite (development and Vercel with persistent storage):
+import dj_database_url
+
+# Default to SQLite for local development
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,10 +99,13 @@ DATABASES = {
     }
 }
 
-# For production with PostgreSQL, uncomment and set DATABASE_URL in Vercel environment:
-# import dj_database_url
-# if os.getenv('DATABASE_URL'):
-#     DATABASES['default'] = dj_database_url.parse(os.getenv('DATABASE_URL'))
+# Use PostgreSQL if DATABASE_URL is set (production/Vercel)
+if os.getenv('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.parse(
+        os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 
 
 # Password validation

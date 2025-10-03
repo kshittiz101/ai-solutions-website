@@ -10,6 +10,8 @@ django-jet-reboot = "*"
 openai = "*"
 python-dotenv = "*"
 whitenoise = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
