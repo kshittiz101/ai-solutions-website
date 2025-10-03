@@ -8,8 +8,8 @@ django = "*"
 pillow = "*"
 django-jet-reboot = "*"
 openai = "*"
-google-generativeai = "*"
 python-dotenv = "*"
+whitenoise = "*"
 
 [dev-packages]
 
