@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Event, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy
+from .models import Article, Event, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy, Service
 
 
 # software solution
@@ -25,6 +25,37 @@ class CaseStudyAdmin(admin.ModelAdmin):
     search_fields = ('title', 'summary', 'problem', 'solution', 'results', 'client_name', 'client_company', 'client_job_title')
     exclude = ("created_by",)
     prepopulated_fields = {"slug": ("title",)}
+
+    def save_model(self, request, obj, form, change):
+        if not obj.created_by:
+            obj.created_by = request.user
+        return super().save_model(request, obj, form, change)
+
+
+# service
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = (
+        'title', 'category', 'status', 'created_at'
+    )
+    list_filter = ('category', 'status', 'created_at')
+    search_fields = ('title', 'description', 'short_description')
+    list_editable = ('status',)
+    exclude = ("created_by",)
+    prepopulated_fields = {"slug": ("title",)}
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('title', 'slug', 'description', 'short_description')
+        }),
+        ('Categorization', {
+            'fields': ('category', 'status')
+        }),
+        ('Visual', {
+            'fields': ('icon', 'image')
+        }),
+        ('Features', {
+            'fields': ('features',)
+        }),
+    )
 
     def save_model(self, request, obj, form, change):
         if not obj.created_by:
@@ -70,6 +101,7 @@ class InquiryResponseAdmin(admin.ModelAdmin):
 # register models
 admin.site.register(SoftwareSolution, SoftwareSolutionAdmin)
 admin.site.register(CaseStudy, CaseStudyAdmin)
+admin.site.register(Service, ServiceAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Inquiry, InquiryAdmin)

@@ -41,6 +41,21 @@ class Direction(models.TextChoices):
     OUTBOUND = "outbound", "Outbound"
 
 
+class ServiceStatus(models.TextChoices):
+    ACTIVE = "active", "Active"
+    INACTIVE = "inactive", "Inactive"
+    COMING_SOON = "coming_soon", "Coming Soon"
+
+
+class ServiceCategory(models.TextChoices):
+    AI_CONSULTING = "ai_consulting", "AI Strategy & Consulting"
+    ML_DEVELOPMENT = "ml_development", "Machine Learning Development"
+    NLP = "nlp", "Natural Language Processing"
+    COMPUTER_VISION = "computer_vision", "Computer Vision"
+    AI_INTEGRATION = "ai_integration", "AI Integration & Deployment"
+    DATA_ANALYTICS = "data_analytics", "Advanced Data Analytics"
+
+
 # ---------- Core tables ----------
 # software solution
 
@@ -64,6 +79,41 @@ class SoftwareSolution(TimeStampedModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = generate_slug(self.title, SoftwareSolution)
+        super().save(*args, **kwargs)
+
+
+# service
+class Service(TimeStampedModel):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
+    description = models.TextField()
+    short_description = models.TextField(max_length=500, blank=True)
+    category = models.CharField(
+        max_length=50, choices=ServiceCategory.choices, db_index=True
+    )
+    status = models.CharField(
+        max_length=20, choices=ServiceStatus.choices, default=ServiceStatus.ACTIVE, db_index=True
+    )
+    icon = models.CharField(max_length=100, blank=True)  # For Remix icon class names
+    image = models.ImageField(upload_to="services/", blank=True, null=True)
+    features = models.JSONField(default=list, blank=True)  # List of feature strings
+    created_by = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="services"
+    )
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["status"]),
+            models.Index(fields=["category", "status"]),
+        ]
+        ordering = ["title"]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = generate_slug(self.title, Service)
         super().save(*args, **kwargs)
 
 

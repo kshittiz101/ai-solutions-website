@@ -1,17 +1,20 @@
-from .models import CaseStudy
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.db.models import Count
 from django.core.paginator import Paginator
-from django.shortcuts import render
-from django.shortcuts import render, redirect
-from .models import Inquiry, CaseStudy, Article, Event
+from .models import Inquiry, CaseStudy, Article, Event, Service
 from django.contrib import messages
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.contrib.messages import get_messages
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from .utils import generate_gemini_response
 from django.utils import timezone
+import json
+import logging
 
+logger = logging.getLogger(__name__)
 # Phone number validator
 phone_validator = RegexValidator(
     regex=r'^\+?[0-9\-\s()]{7,20}$',
@@ -113,7 +116,6 @@ def handle_inquiry_submission(request):
 
 
 def home(request):
-    # get the first 3 case studies
     case_studies = CaseStudy.objects.all()[:3]
     articles = Article.objects.filter(status='published')[:3]
     events = Event.objects.all()[:6]
@@ -168,6 +170,47 @@ def case_study_list(request):
 def case_studies_details(request, slug):
     case_study = CaseStudy.objects.get(slug=slug)
     return render(request, "base/pages/case-studies-details.html", {"case_study": case_study})
+
+def services(request):
+    """Services page view"""
+    from .models import Service
+
+    # Get all active services, ordered by title
+    services = Service.objects.filter(status='active').order_by('title')
+
+    context = {
+        'services': services,
+    }
+    return render(request, "base/pages/services.html", context)
+
+def ai_assistant(request):
+    """AI Assistant chatbot page view with Gemini integration"""
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_message = data.get('message', '').strip()
+
+            if not user_message:
+                return JsonResponse({
+                    'response': 'Please enter a message.',
+                    'is_html': False
+                }, status=400)
+
+            # Generate AI response using Gemini
+            response = generate_gemini_response(user_message)
+
+            return JsonResponse({
+                'response': response,
+                'is_html': True
+            })
+        except Exception as e:
+            logger.error(f"Error in ai_assistant view: {str(e)}")
+            return JsonResponse({
+                'response': 'Sorry, I encountered an error. Please try again.',
+                'is_html': False
+            }, status=500)
+
+    return render(request, "base/pages/ai-assistant.html")
 
 def contact(request):
     if request.method == "POST":
