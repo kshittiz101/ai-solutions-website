@@ -1,40 +1,43 @@
-from django.utils.text import slugify
 import uuid
-from openai import OpenAI
-from dotenv import load_dotenv
 import os
+import json
 import logging
+from django.utils.text import slugify
+from django.http import JsonResponse
+from django.shortcuts import render
+from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-def generate_slug(title: str, class_name: str) -> str:
+# --------------------- Slug Generator ---------------------
+def generate_slug(title: str, class_name) -> str:
+    """Generate unique slug for a model instance"""
     title = slugify(title)
     while class_name.objects.filter(slug=title).exists():
         title = f"{title}-{uuid.uuid4().hex[:4]}"
     return title
 
 
-
-
+# --------------------- Company Context ---------------------
 def get_company_context():
     """Fetch company data from database for AI context"""
-    from .models import Service, CaseStudy, Article, Event
+    # Import here to avoid circular import
+    from .models import Service, CaseStudy
 
     # Get services
-    services = Service.objects.filter(status='active')[:6]
-    services_info = "\n".join([
-        f"- {s.title}: {s.short_description}"
-        for s in services
-    ]) if services.exists() else "AI/ML Services, NLP Solutions, Computer Vision"
+    services = Service.objects.filter(status="active")[:6]
+    services_info = "\n".join(
+        [f"- {s.title}: {s.short_description}" for s in services]
+    ) if services.exists() else "AI/ML Services, NLP Solutions, Computer Vision"
 
     # Get case studies
     case_studies = CaseStudy.objects.all()[:3]
-    case_studies_info = "\n".join([
-        f"- {cs.title}: {cs.summary}"
-        for cs in case_studies
-    ]) if case_studies.exists() else "Multiple successful AI implementation projects"
+    case_studies_info = "\n".join(
+        [f"- {cs.title}: {cs.summary}" for cs in case_studies]
+    ) if case_studies.exists() else "Multiple successful AI implementation projects"
 
     return f"""
 SERVICES WE OFFER:
@@ -51,84 +54,173 @@ CONTACT INFORMATION:
 - Events: /events/
 """
 
-SYSTEM_PROMPT = """
-You are an AI assistant for AI Solutions, a leading AI development company specializing in custom AI solutions for businesses.
 
-COMPANY OVERVIEW:
-AI Solutions helps organizations leverage artificial intelligence to solve complex problems and drive growth. We provide:
-- AI Strategy & Consulting
-- Machine Learning Development
-- Natural Language Processing
-- Computer Vision Solutions
-- AI Integration & Deployment
-- Advanced Data Analytics
-
-YOUR ROLE:
-1. Answer questions about AI Solutions' services, case studies, and capabilities
-2. Provide helpful information about how AI can benefit businesses
-3. Guide users to relevant pages (services, case studies, contact, etc.)
-4. Be professional, friendly, and informative
-5. If asked about topics unrelated to AI Solutions or AI technology, politely say you can only help with questions about AI Solutions and AI technologies
-
-IMPORTANT:
-- Format responses using HTML tags: <strong>, <br/>, <ul>, <li>, etc.
-- Use links like: <a href="/services/" class="text-emerald-400 underline">Services page</a>
-- Be concise but informative
-- Always maintain a helpful and professional tone
-- If you don't have specific information, direct users to contact the team
-
-{company_context}
-"""
-
-
-AI_MODLE_ID="gemini-2.0-flash",
+# --------------------- Simple Chatbot Response ---------------------
 def generate_gemini_response(query: str) -> str:
-    """Generate AI response using Gemini API with company context"""
+    """
+    Simple rule-based chatbot for AI Solutions company.
+    No external API needed - just pattern matching and responses.
+    """
+    # Import here to avoid circular import
+    from .models import Service, CaseStudy
+
+    query_lower = query.lower().strip()
+
+    # Get company data
     try:
-        # Get fresh company context
-        company_context = get_company_context()
+        services = Service.objects.filter(status="active")
+        case_studies = CaseStudy.objects.all()[:3]
+    except:
+        services = []
+        case_studies = []
 
-        # Format system prompt with context
-        formatted_prompt = SYSTEM_PROMPT.format(company_context=company_context)
+    # Keywords for pattern matching
+    service_keywords = ['service', 'services', 'offer', 'provide', 'do', 'help', 'solutions']
+    pricing_keywords = ['price', 'cost', 'pricing', 'charge', 'fee', 'payment']
+    about_keywords = ['about', 'company', 'who', 'what is', 'tell me']
+    contact_keywords = ['contact', 'reach', 'talk', 'speak', 'email', 'phone', 'call']
+    case_study_keywords = ['case study', 'case studies', 'portfolio', 'project', 'work', 'clients', 'success']
+    ai_keywords = ['ai', 'artificial intelligence', 'machine learning', 'ml', 'nlp', 'computer vision']
 
-        api_key = os.getenv("GEMINI_API_KEY")
+    # Pattern matching responses
 
-        if not api_key:
-            logger.error("GEMINI_API_KEY not found in environment variables")
-            raise ValueError("API key not configured")
+    # Greetings
+    if any(word in query_lower for word in ['hello', 'hi', 'hey', 'greetings']):
+        return """
+        <p>Hello! 👋 Welcome to <strong>AI Solutions</strong>!</p>
+        <p>I'm here to help you learn about our AI services and how we can transform your business with artificial intelligence.</p>
+        <br/>
+        <p>You can ask me about:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Our AI services and solutions</li>
+            <li>Case studies and success stories</li>
+            <li>How to get in touch with our team</li>
+        </ul>
+        """
 
-        logger.debug(f"Using API key: {api_key[:10]}...")
-        logger.debug(f"Query received: {query}")
+    # Services
+    if any(keyword in query_lower for keyword in service_keywords):
+        if services:
+            services_html = "<ul class='list-disc list-inside mt-2 space-y-2'>"
+            for service in services[:6]:
+                services_html += f"<li><strong>{service.title}</strong>: {service.short_description}</li>"
+            services_html += "</ul>"
 
-        client = OpenAI(
-            api_key=api_key,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-        )
+            return f"""
+            <p>At <strong>AI Solutions</strong>, we offer comprehensive AI services:</p>
+            {services_html}
+            <br/>
+            <p>Visit our <a href="/services/" class="text-emerald-400 underline">Services page</a> for detailed information or <a href="/contact/" class="text-emerald-400 underline">contact us</a> to discuss your project!</p>
+            """
+        else:
+            return """
+            <p>We offer a wide range of <strong>AI solutions</strong> including:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>AI Strategy & Consulting</li>
+                <li>Machine Learning Development</li>
+                <li>Natural Language Processing</li>
+                <li>Computer Vision Solutions</li>
+                <li>AI Integration & Deployment</li>
+            </ul>
+            <br/>
+            <p>Visit our <a href="/services/" class="text-emerald-400 underline">Services page</a> or <a href="/contact/" class="text-emerald-400 underline">contact us</a> to learn more!</p>
+            """
 
-        response = client.chat.completions.create(
-            model=AI_MODLE_ID,
-            messages=[
-                {"role": "system", "content": formatted_prompt},
-                {"role": "user", "content": query}
-            ]
-        )
+    # Pricing
+    if any(keyword in query_lower for keyword in pricing_keywords):
+        return """
+        <p>Our pricing is <strong>customized</strong> based on your specific needs and project scope.</p>
+        <br/>
+        <p>Factors we consider:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Project complexity and requirements</li>
+            <li>Timeline and deliverables</li>
+            <li>Ongoing support needs</li>
+        </ul>
+        <br/>
+        <p>Please <a href="/contact/" class="text-emerald-400 underline">contact our team</a> for a personalized quote!</p>
+        """
 
-        ai_response = response.choices[0].message.content
-        logger.debug(f"AI Response: {ai_response[:100]}...")
+    # About company
+    if any(keyword in query_lower for keyword in about_keywords):
+        return """
+        <p><strong>AI Solutions</strong> is a leading AI development company specializing in custom artificial intelligence solutions for businesses.</p>
+        <br/>
+        <p>We help organizations:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Solve complex problems with AI</li>
+            <li>Automate processes and increase efficiency</li>
+            <li>Gain insights from data</li>
+            <li>Build competitive advantages with AI technology</li>
+        </ul>
+        <br/>
+        <p>Explore our <a href="/services/" class="text-emerald-400 underline">Services</a> or <a href="/case-study/" class="text-emerald-400 underline">Case Studies</a> to see what we can do for you!</p>
+        """
 
-        return ai_response
+    # Contact
+    if any(keyword in query_lower for keyword in contact_keywords):
+        return """
+        <p>We'd love to hear from you! 💬</p>
+        <br/>
+        <p>You can reach us through our <a href="/contact/" class="text-emerald-400 underline">Contact page</a> where you can:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li>Fill out an inquiry form</li>
+            <li>Tell us about your project</li>
+            <li>Get a response within 24 hours</li>
+        </ul>
+        <br/>
+        <p><a href="/contact/" class="text-emerald-400 underline">Contact us now</a> to get started!</p>
+        """
 
-    except Exception as e:
-        # Log the full error
-        import traceback
-        logger.error(f"ERROR in generate_gemini_response: {str(e)}")
-        logger.error(traceback.format_exc())
+    # Case studies
+    if any(keyword in query_lower for keyword in case_study_keywords):
+        if case_studies:
+            cs_html = "<ul class='list-disc list-inside mt-2 space-y-2'>"
+            for cs in case_studies:
+                cs_html += f"<li><strong>{cs.title}</strong>: {cs.summary[:100]}...</li>"
+            cs_html += "</ul>"
 
-        # Fallback response if Gemini API fails
-        return f"""I apologize, but I'm having trouble connecting to the AI service right now. 🤖<br/><br/>
-        In the meantime, you can:<br/><br/>
-        • Visit our <a href="/services/" class="text-emerald-400 underline">Services page</a> to learn about our offerings<br/>
-        • Check out our <a href="/case-study/" class="text-emerald-400 underline">Case Studies</a> to see our success stories<br/>
-        • <a href="/contact/" class="text-emerald-400 underline">Contact us</a> directly for personalized assistance<br/><br/>
-        Technical error: {str(e)[:200]}"""
+            return f"""
+            <p>We're proud of our successful AI implementations! Here are some highlights:</p>
+            {cs_html}
+            <br/>
+            <p>See all our success stories on our <a href="/case-study/" class="text-emerald-400 underline">Case Studies page</a>!</p>
+            """
+        else:
+            return """
+            <p>We've helped numerous companies transform their businesses with AI! 🚀</p>
+            <br/>
+            <p>Check out our <a href="/case-study/" class="text-emerald-400 underline">Case Studies page</a> to see our successful projects and client testimonials.</p>
+            """
 
+    # AI-related general questions
+    if any(keyword in query_lower for keyword in ai_keywords):
+        return """
+        <p>Artificial Intelligence is transforming businesses across industries! 🤖</p>
+        <br/>
+        <p>At <strong>AI Solutions</strong>, we specialize in:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1">
+            <li><strong>Machine Learning</strong> - Predictive analytics and automation</li>
+            <li><strong>Natural Language Processing</strong> - Chatbots and text analysis</li>
+            <li><strong>Computer Vision</strong> - Image recognition and processing</li>
+            <li><strong>AI Strategy</strong> - Planning and implementation guidance</li>
+        </ul>
+        <br/>
+        <p>Explore our <a href="/services/" class="text-emerald-400 underline">Services</a> or <a href="/contact/" class="text-emerald-400 underline">contact us</a> to discuss your AI needs!</p>
+        """
+
+    # Default response
+    return """
+    <p>I'm here to help you learn about <strong>AI Solutions</strong>! 🤝</p>
+    <br/>
+    <p>I can answer questions about:</p>
+    <ul class="list-disc list-inside mt-2 space-y-1">
+        <li>Our <a href="/services/" class="text-emerald-400 underline">AI Services</a></li>
+        <li>Our <a href="/case-study/" class="text-emerald-400 underline">Case Studies</a></li>
+        <li>How to <a href="/contact/" class="text-emerald-400 underline">Contact us</a></li>
+        <li>Our <a href="/articles/" class="text-emerald-400 underline">Articles</a> and insights</li>
+        <li>Upcoming <a href="/events/" class="text-emerald-400 underline">Events</a></li>
+    </ul>
+    <br/>
+    <p>What would you like to know?</p>
+    """

@@ -6,9 +6,10 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
-python-dotenv = "*"
 django-jet-reboot = "*"
 openai = "*"
+google-generativeai = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

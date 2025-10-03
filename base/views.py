@@ -183,6 +183,20 @@ def services(request):
     }
     return render(request, "base/pages/services.html", context)
 
+def contact(request):
+    if request.method == "POST":
+        handle_inquiry_submission(request)
+        return redirect("contact")
+
+    context = {
+        "toasts": generate_toasts_from_messages(request)
+    }
+    return render(request, "base/pages/contacts.html", context=context)
+
+
+
+
+# --------------------- Django View ---------------------
 def ai_assistant(request):
     """AI Assistant chatbot page view with Gemini integration"""
     if request.method == 'POST':
@@ -211,13 +225,3 @@ def ai_assistant(request):
             }, status=500)
 
     return render(request, "base/pages/ai-assistant.html")
-
-def contact(request):
-    if request.method == "POST":
-        handle_inquiry_submission(request)
-        return redirect("contact")
-
-    context = {
-        "toasts": generate_toasts_from_messages(request)
-    }
-    return render(request, "base/pages/contacts.html", context=context)
