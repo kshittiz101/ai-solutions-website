@@ -40,9 +40,10 @@ Click **"Deploy"** and wait ~2-3 minutes
 
 ## 📝 Files Created
 
-✅ `vercel.json` - Vercel configuration
-✅ `build.sh` - Build script
-✅ `requirements.txt` - Python dependencies
+✅ `vercel.json` - Vercel configuration (uses pipenv)
+✅ `build.sh` - Build script (uses pipenv commands)
+✅ `requirements.txt` - Python dependencies (backup)
+✅ `Pipfile` & `Pipfile.lock` - Pipenv dependencies (primary)
 ✅ `.vercelignore` - Exclude files
 ✅ `api/index.py` - Serverless entry point
 

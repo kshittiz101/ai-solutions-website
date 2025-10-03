@@ -70,7 +70,9 @@ EMAIL_USE_TLS=True
    - Framework Preset: **Other**
    - Build Command: `bash build.sh`
    - Output Directory: `staticfiles`
-   - Install Command: `pip install -r requirements.txt`
+   - Install Command: `pip install pipenv && pipenv install --deploy --ignore-pipfile`
+
+   **Note:** The project uses **pipenv** for dependency management
 
 4. **Add Environment Variables** (see above section)
 
@@ -129,11 +131,12 @@ EMAIL_USE_TLS=True
    DATABASE_URL=postgresql://...
    ```
 
-4. **Update requirements.txt:**
+4. **Update dependencies:**
 
    ```bash
-   pip install psycopg2-binary dj-database-url
-   pip freeze > requirements.txt
+   pipenv install psycopg2-binary dj-database-url
+   pipenv lock
+   pipenv requirements > requirements.txt  # Update requirements.txt
    ```
 
 5. **Uncomment database configuration in `config/settings.py`:**

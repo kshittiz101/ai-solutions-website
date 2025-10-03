@@ -31,7 +31,9 @@
     }
   ],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "config.settings"
+    "DJANGO_SETTINGS_MODULE": "config.settings",
+    "PIPENV_VENV_IN_PROJECT": "1"
   },
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "installCommand": "pip install pipenv && pipenv install --deploy --ignore-pipfile"
 }
