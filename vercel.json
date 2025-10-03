@@ -7,13 +7,6 @@
       "config": {
         "maxLambdaSize": "50mb"
       }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles"
-      }
     }
   ],
   "routes": [
@@ -22,11 +15,11 @@
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       },
-      "continue": true
+      "dest": "/staticfiles/$1"
     },
     {
       "src": "/media/(.*)",
-      "continue": true
+      "dest": "/media/$1"
     },
     {
       "src": "/(.*)",

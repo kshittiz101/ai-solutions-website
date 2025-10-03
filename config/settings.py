@@ -152,9 +152,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Additional locations of static files
-STATICFILES_DIRS = [
-    BASE_DIR / 'base' / 'static',
-]
+STATICFILES_DIRS = []
 
 # Static file finders
 STATICFILES_FINDERS = [
@@ -166,8 +164,9 @@ STATICFILES_FINDERS = [
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
 WHITENOISE_KEEP_ONLY_HASHED_FILES = False
+WHITENOISE_STATIC_PREFIX = '/static/'
 
-# Optional: gzip/brotli compression
+# Storage configuration - use WhiteNoise
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
