@@ -6,12 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
-django-jet-reboot = "*"
 openai = "*"
 python-dotenv = "*"
 whitenoise = "*"
 psycopg2-binary = "*"
 dj-database-url = "*"
+django-jet-reboot = "*"
 
 [dev-packages]
 

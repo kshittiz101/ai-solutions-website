@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "47cc3949712d8ff4d96e997adc88f1b3015628512eb8b2ff582e7b3789f20b7c"
+            "sha256": "d54aa750fd92af9fc398ede8ba1474b858bcca6e20f99b44da0ff7caa42a4eb0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -41,6 +41,13 @@
             "index": "pypi",
             "markers": "python_version >= '3.10'",
             "version": "==5.2.7"
+        },
+        "django-jet-reboot": {
+            "hashes": [
+                "sha256:d54cd4fa4d22706bf48884191300e9c22c777b835993f8112c35126c2edcf135"
+            ],
+            "index": "pypi",
+            "version": "==1.3.10"
         },
         "pillow": {
             "hashes": [
