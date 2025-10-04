@@ -184,7 +184,6 @@ class Article(TimeStampedModel):
 
 # event
 
-
 class Event(TimeStampedModel):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
@@ -215,6 +214,28 @@ class Event(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+
+# event gallery image
+class EventGalleryImage(TimeStampedModel):
+    """
+    Stores images for the event gallery. Multiple images can be associated with a single event.
+    """
+    event = models.ForeignKey(
+        Event, on_delete=models.CASCADE, related_name="gallery_images"
+    )
+    image = models.ImageField(upload_to="event_gallery/")
+    caption = models.CharField(max_length=255, blank=True)
+    order = models.PositiveIntegerField(default=0, help_text="Display order (lower numbers appear first)")
+
+    class Meta:
+        ordering = ["order", "created_at"]
+        indexes = [
+            models.Index(fields=["event", "order"]),
+        ]
+
+    def __str__(self):
+        return f"{self.event.title} - Image {self.id}"
 
 
 # inquiry

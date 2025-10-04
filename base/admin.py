@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Event, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy, Service
+from .models import Article, Event, EventGalleryImage, Inquiry, InquiryResponse, SoftwareSolution, CaseStudy, Service
 
 
 # software solution
@@ -76,10 +76,19 @@ class ArticleAdmin(admin.ModelAdmin):
         return super().save_model(request, obj, form, change)
 
 
+class EventGalleryImageInline(admin.TabularInline):
+    model = EventGalleryImage
+    extra = 1
+    fields = ('image', 'caption', 'order')
+    ordering = ('order', 'created_at')
+
+
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'starts_at', 'ends_at')
-    list_filter = ('starts_at', 'ends_at')
-    search_fields = ('title', 'description')
+    list_display = ('title', 'starts_at', 'ends_at', 'location', 'is_public')
+    list_filter = ('starts_at', 'ends_at', 'is_public')
+    search_fields = ('title', 'description', 'location')
+    prepopulated_fields = {"slug": ("title",)}
+    inlines = [EventGalleryImageInline]
 
 
 class InquiryAdmin(admin.ModelAdmin):

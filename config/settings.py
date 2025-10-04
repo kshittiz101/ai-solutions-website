@@ -166,8 +166,11 @@ WHITENOISE_AUTOREFRESH = True
 WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 WHITENOISE_STATIC_PREFIX = '/static/'
 
-# Storage configuration - use WhiteNoise
+# Storage configuration - use WhiteNoise for static files and default for media
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
     }
