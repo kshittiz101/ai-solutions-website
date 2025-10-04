@@ -140,8 +140,12 @@ def articles_page(request):
 
 
 def articles_details(request, slug):
-    article = Article.objects.get(slug=slug)
-    return render(request, "base/pages/articles-details.html", {"article": article})
+    try:
+        article = Article.objects.get(slug=slug)
+        return render(request, "base/pages/articles-details.html", {"article": article})
+    except Article.DoesNotExist:
+        from django.http import Http404
+        raise Http404("Article not found")
 
 
 
@@ -152,8 +156,12 @@ def all_events_page(request):
 
 
 def events_details(request, slug):
-    event = Event.objects.get(slug=slug)
-    return render(request, "base/pages/events-details.html", {"event": event})
+    try:
+        event = Event.objects.get(slug=slug)
+        return render(request, "base/pages/events-details.html", {"event": event})
+    except Event.DoesNotExist:
+        from django.http import Http404
+        raise Http404("Event not found")
 
 
 
@@ -168,8 +176,12 @@ def case_study_list(request):
 
 
 def case_studies_details(request, slug):
-    case_study = CaseStudy.objects.get(slug=slug)
-    return render(request, "base/pages/case-studies-details.html", {"case_study": case_study})
+    try:
+        case_study = CaseStudy.objects.get(slug=slug)
+        return render(request, "base/pages/case-studies-details.html", {"case_study": case_study})
+    except CaseStudy.DoesNotExist:
+        from django.http import Http404
+        raise Http404("Case study not found")
 
 def services(request):
     """Services page view"""
